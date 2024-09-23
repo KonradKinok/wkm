@@ -1,0 +1,54 @@
+.main-container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    flex-flow: column nowrap;
+
+    background-color: var(--header-background);
+    padding: 15px;
+    grid-row: 1;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--main-background);
+    grid-row: 2;
+}
+
+.application-title {
+    max-width: fit-content;
+    text-transform: uppercase;
+
+    font-size: 40px;
+    font-weight: 900;
+    background-image: linear-gradient(to right, var(--title-color-gradient1), var(--title-color-gradient2));
+    background-clip: text;
+    color: transparent;
+    transition: background-image 0.5s ease-in-out;
+}
+
+.application-title:hover {
+    background-image: linear-gradient(to left, var(--title-color-gradient1), var(--title-color-gradient2));
+}
+
+/* Mobile (do 480px) */
+@media (max-width: 480px) {
+    /* Stylowanie dla małych ekranów */
+}
+
+/* Tablet (od 481px do 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    /* Stylowanie dla tabletów */
+}
+
+/* Desktop (od 769px do 1024px i więcej) */
+@media (min-width: 769px) {
+    /* Stylowanie dla dużych ekranów */
+}
+
+// Mobile: 320px - 480px Tablet: 600px - 768px Desktop: 1024px - 1440px+
