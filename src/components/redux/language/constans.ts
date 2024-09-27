@@ -1,6 +1,7 @@
 export enum Languages {
-  EN = "en",
-  PL = "pl",
+    PL = "pl",
+    EN = "en",
+  UA="ua",
 }
 
 export const langDictionary = {
@@ -8,6 +9,7 @@ export const langDictionary = {
     navWkm: {
         [Languages.EN]: "Wkm",
         [Languages.PL]: "Wkm",
+        [Languages.UA]: "Wkm",
     },
     //Nav
     navPhonebook: {
@@ -17,10 +19,12 @@ export const langDictionary = {
     navHome: {
         [Languages.EN]: "Home",
         [Languages.PL]: "Start",
+        [Languages.UA]: "Cтарт",
     },
-    navContacts: {
-        [Languages.EN]: "Contacts",
-        [Languages.PL]: "Kontakty",
+    navPenalties: {
+        [Languages.EN]: "Penalties",
+        [Languages.PL]: "Kary",
+        [Languages.UA]: "Штрафи",
     },
     navWelcome: {
         [Languages.EN]: "Welcome",

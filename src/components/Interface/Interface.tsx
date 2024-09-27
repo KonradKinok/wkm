@@ -46,7 +46,7 @@ export interface FiltersState {
 
 //language/languageSlice.ts
 export interface LanguageState {
-  language: "en" | "pl"; // Można rozszerzyć o inne języki
+  language: "pl" | "en" | "ua"; // Można rozszerzyć o inne języki
 }
 
 export interface WindowDimensionState {

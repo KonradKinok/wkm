@@ -1,6 +1,7 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import Select, { SingleValue } from "react-select";
 import { Navigation } from "../../components/Navigation/Navigation";
 import scss from "./LayoutPage.module.scss";
 import { Footer } from "../../components/Footer/Footer";
@@ -9,6 +10,11 @@ import { selectWindowDimensions } from "../../components/redux/windowDimensions/
 import { langDictionary } from "../../components/redux/language/constans";
 import { useDispatch, useSelector } from "react-redux";
 import { setWindowDimension } from "../../components/redux/windowDimensions/sliceWindowDimensions"; // Import właściwej akcji z Reduxa
+import { setLanguage } from "../../components/redux/language/sliceLanguage";
+import { customStyles, languageOptions } from "./dataForCombobox.languages";
+import * as globalFunctions from "../../globalFunctions/functions";
+
+const LOCAL_STORAGE_KEY_LANGUAGE = "language";
 
 const screen = {
   mobile: "mobile",
@@ -18,12 +24,34 @@ const screen = {
 
 export const LayoutPage: React.FC = () => {
   const currentLanguage = useSelector(selectLanguage);
+
+  const defaultLanguageComboBox = () => {
+    const languageFromLocalStorage = globalFunctions.loadLocalStorage(
+      LOCAL_STORAGE_KEY_LANGUAGE,
+    );
+    if (languageFromLocalStorage) {
+      const language = languageFromLocalStorage.currentLanguage;
+      return languageOptions.find((option) => option.value === language);
+    }
+    console.log("currentLanguage", currentLanguage);
+    return languageOptions.find((option) => option.value === currentLanguage);
+  };
   const currentScreen = useSelector(selectWindowDimensions);
   const [windowSize, setWindowSize] = useState<number | null>(null); // Zmieniono nazwę na windowSize
   const dispatch = useDispatch();
+  const handleChangeLanguage = (option) => {
+    if (option) {
+      dispatch(setLanguage(option.value));
+      globalFunctions.saveLocalStorage(LOCAL_STORAGE_KEY_LANGUAGE, {
+        currentLanguage: option.value,
+      });
+    }
+  };
 
   useEffect(() => {
     setWindowSize(window.innerWidth); // Ustawianie rozmiaru okna
+    const defaultLanguage = defaultLanguageComboBox();
+    dispatch(setLanguage(defaultLanguage?.value));
   }, []);
 
   useEffect(() => {
@@ -50,14 +78,23 @@ export const LayoutPage: React.FC = () => {
   return (
     <div className={scss["main-container"]}>
       <header className={scss["header"]}>
-        <Link to="/" className={scss["application-title"]}>
-          {langDictionary.navWkm[currentLanguage]}
-        </Link>
+        <div className={scss["title-combobox-container"]}>
+          <Link to="/" className={scss["application-title"]}>
+            {langDictionary.navWkm[currentLanguage]}
+          </Link>
+          <div>
+            <Select
+              defaultValue={defaultLanguageComboBox()}
+              onChange={(option) => handleChangeLanguage(option)}
+              options={languageOptions}
+              isSearchable={false}
+              styles={customStyles}
+            />
+          </div>
+        </div>
         <Navigation />
       </header>
       <main className={scss["main"]}>
-        <h1>{windowSize}</h1>
-        <h2>{currentScreen}</h2>
         <Suspense fallback={<div>Loading page...</div>}>
           <Outlet />
         </Suspense>

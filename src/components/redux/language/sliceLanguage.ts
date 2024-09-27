@@ -9,7 +9,7 @@ const languageSlice = createSlice({
   name: 'language',
   initialState,
   reducers: {
-    setLanguage(state: LanguageState, action: PayloadAction<'en' | 'pl'>) {
+    setLanguage(state: LanguageState, action: PayloadAction<'pl' | 'en' | 'ua'>) {
       state.language = action.payload;
     },
   },

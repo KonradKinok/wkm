@@ -12,21 +12,10 @@ interface NavigationProps {
 }
 
 export const Navigation: React.FC<NavigationProps> = ({ onLinkClick }) => {
-  const dispatch = useDispatch<AppDispatch>();
   const currentLanguage = useSelector(selectLanguage);
-
-  const handleChangeLanguage = () => {
-    const newLanguage =
-      currentLanguage === Languages.EN ? Languages.PL : Languages.EN;
-    dispatch(setLanguage(newLanguage));
-    if (onLinkClick) onLinkClick();
-  };
 
   return (
     <nav className={scss["nav-navigation"]}>
-      <a className={scss["lang"]} onClick={handleChangeLanguage}>
-        {currentLanguage}
-      </a>
       <NavLink
         to="/"
         className={({ isActive }) => (isActive ? scss.active : "")}
@@ -38,7 +27,7 @@ export const Navigation: React.FC<NavigationProps> = ({ onLinkClick }) => {
         to="penalties"
         className={({ isActive }) => (isActive ? scss.active : "")}
         onClick={onLinkClick}>
-        {langDictionary.navContacts[currentLanguage]}
+        {langDictionary.navPenalties[currentLanguage]}
       </NavLink>
     </nav>
   );

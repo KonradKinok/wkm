@@ -7,10 +7,16 @@
 .header {
     display: flex;
     flex-flow: column nowrap;
-
+    gap: 20px;
     background-color: var(--header-background);
     padding: 15px;
     grid-row: 1;
+}
+
+.title-combobox-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .main {
@@ -34,6 +40,13 @@
 
 .application-title:hover {
     background-image: linear-gradient(to left, var(--title-color-gradient1), var(--title-color-gradient2));
+}
+
+// ComboBox
+.combobox-item {
+    display: inline-flex;
+    cursor: pointer;
+    // color: var(--combobox-text-color);
 }
 
 /* Mobile (do 480px) */

@@ -12,13 +12,22 @@
 :root {
     --body-background: rgb(176, 196, 222);
     /* header */
-    --header-background: rgb(30, 144, 255);
-    --header-text-color: rgb(255, 255, 255);
-    --header-text-hover-color: rgb(0, 0, 255);
-    --header-text-active-background: rgb(0, 0, 255);
+    --header-background: rgb(75, 0, 130); /*Indygo */
+    --header-text-color: rgb(224, 255, 255);/*LightCyan */
+    --header-text-hover-color: rgb(175, 238, 238);/*PaleTurquoise */
+    --header-text-active-color: rgb(75, 0, 130);/*Indygo */
+    --header-text-active-background: rgb(224, 255, 255);/*LightCyan */
+        
     /* title */
     --title-color-gradient1: rgb(240, 242, 240);
     --title-color-gradient2: rgb(0, 12, 64);
+    /* combobox */
+    --combobox-text-color: rgb(75, 0, 130);/*Indygo */
+    --combobox-text-hover-color: rgb(224, 255, 255);/*LightCyan */
+    --combobox-text-hover-background: rgb(175, 238, 238);/*PaleTurquoise */
+    --combobox-control-background: rgb(224, 255, 255);/*LightCyan */
+    --combobox-control-border: rgb(138, 43, 226);/*BlueViolet */
+        
     /* main */
     --main-background: rgb(135, 206, 250);
     /* form */
@@ -28,8 +37,8 @@
     --form-button-background-first: rgb(0, 0, 255);
     --form-button-background-second: rgb(0, 100, 255);
     /* footer */
-    --footer-background: rgb(30, 144, 255);
-    --footer-text-color: rgb(0, 0, 255);
+    --footer-background: rgb(75, 0, 130); /*Indygo */
+    --footer-text-color: rgb(224, 255, 255);/*LightCyan */
     --footer-text-color-hover: rgb(25, 25, 112);
     /* mobile-menu */
     --mobile-menu-open-icon-color: rgb(0, 0, 255);
