@@ -89,6 +89,9 @@ export const LayoutPage: React.FC = () => {
               options={languageOptions}
               isSearchable={false}
               styles={customStyles}
+              menuPortalTarget={document.body} // Portal, który zapewnia renderowanie listy na poziomie document.body
+              menuPosition="fixed" // Zapewnia, że pozycjonowanie menu jest "fixed"
+              menuShouldBlockScroll={true} // Opcjonalnie: blokuje scroll podczas otwartego menu
             />
           </div>
         </div>

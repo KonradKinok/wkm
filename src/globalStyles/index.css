@@ -29,7 +29,9 @@
     --combobox-control-border: rgb(138, 43, 226);/*BlueViolet */
         
     /* main */
-    --main-background: rgb(135, 206, 250);
+    --main-background: rgb(224, 255, 255);/*LightCyan */
+    --main-color: rgb(75, 0, 130);/*Indygo */
+        
     /* form */
     --form-color: rgb(0, 100, 255);
     --form-field-background: rgb(255, 255, 255);

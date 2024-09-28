@@ -1,16 +1,11 @@
 .container-home-page {
-        display: grid;
-        grid-template-areas:
-                'imgSadman  secondPhrase'
-                'firstPhrase  imgHappyman';
+        display: flex;
+        flex-wrap: wrap;
         padding: 30px 10px;
         width: 100%;
         background-color: var(--main-background);
-        background-image: linear-gradient(180deg, var(--main-background) 0%, var(--header-background) 50%, var(--main-background) 100%);
-        grid-template-rows: auto auto;
-        column-gap: 10px;
-        z-index: 1;
-        color: var(--header-text-hover-color);
+        // background-image: linear-gradient(180deg, var(--main-background) 0%, var(--header-background) 50%, var(--main-background) 100%);
+        color: var(--main-color);
         font-weight: 600;
         font-size: larger;
         overflow: hidden;
@@ -91,4 +86,9 @@
         font-weight: 500;
         font-size: 48;
         text-align: center;
+}
+
+
+.try-img {
+        width: 300px;
 }
