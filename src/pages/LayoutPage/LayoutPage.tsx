@@ -16,12 +16,13 @@ import {
   languageOptions,
   LanguageOption,
 } from "./dataForCombobox.languages";
+import { LanguageValue } from "../../components/redux/language/sliceLanguage";
 import * as globalFunctions from "../../globalFunctions/functions";
 interface LanguageLocalStorage {
   currentLanguage: string;
 }
 const LOCAL_STORAGE_KEY_LANGUAGE = "language";
-type LanguageValue = "pl" | "en" | "ua";
+
 const screen = {
   mobile: "mobile",
   tablet: "tablet",
@@ -37,7 +38,8 @@ export const LayoutPage: React.FC = () => {
     ) as LanguageLocalStorage | null;
 
     if (languageFromLocalStorage) {
-      const language = languageFromLocalStorage.currentLanguage;
+      const language =
+        languageFromLocalStorage.currentLanguage as LanguageValue;
       return languageOptions.find((option) => option.value === language);
     }
 
@@ -46,9 +48,10 @@ export const LayoutPage: React.FC = () => {
   const currentScreen = useSelector(selectWindowDimensions);
   const [windowSize, setWindowSize] = useState<number | null>(null); // Zmieniono nazwę na windowSize
   const dispatch = useDispatch();
+
   const handleChangeLanguage = (option: SingleValue<LanguageOption>): void => {
     if (option) {
-      dispatch(setLanguage(option.value));
+      dispatch(setLanguage(option.value)); // Użyj zdefiniowanego typu
       globalFunctions.saveLocalStorage(LOCAL_STORAGE_KEY_LANGUAGE, {
         currentLanguage: option.value,
       });
@@ -58,7 +61,7 @@ export const LayoutPage: React.FC = () => {
   useEffect(() => {
     setWindowSize(window.innerWidth); // Ustawianie rozmiaru okna
     const defaultLanguage = defaultLanguageComboBox();
-    dispatch(setLanguage(defaultLanguage?.value));
+    dispatch(setLanguage(defaultLanguage?.value || "pl"));
   }, []);
 
   useEffect(() => {

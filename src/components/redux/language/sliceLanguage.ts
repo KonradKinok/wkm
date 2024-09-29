@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { LanguageState } from '../../Interface/Interface';
-
+export type LanguageValue = "pl" | "en" | "ua"; // Typ dla języków
+export interface LanguageState {
+  language: LanguageValue; // Użyj zdefiniowanego typu
+}
 const initialState: LanguageState = {
   language: 'pl', // Domyślny język
 };
@@ -9,7 +11,7 @@ const languageSlice = createSlice({
   name: 'language',
   initialState,
   reducers: {
-    setLanguage(state: LanguageState, action: PayloadAction<'pl' | 'en' | 'ua'>) {
+    setLanguage(state: LanguageState, action: PayloadAction<LanguageValue>) {
       state.language = action.payload;
     },
   },
