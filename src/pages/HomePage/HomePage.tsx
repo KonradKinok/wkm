@@ -4,35 +4,31 @@ import { selectLanguage } from "../../components/redux/language/selectorsLanguag
 import { langDictionary } from "../../components/redux/language/constans";
 import scss from "./HomePage.module.scss";
 import obrazekPlacacyMezczyzna from "../../images/homePage/obrazekPlacacyMezczyzna.jpg";
-import samochodBezTla from "../../images/homePage/samochodBezTla.png";
 import samochodPlusTloJpg from "../../images/homePage/samochodPlusTlo.jpg";
-import samochodPlusTloPng from "../../images/homePage/samochodPlusTlo.png";
-import samochodWKM from "../../images/homePage/samochodWKM.jpg";
+import { Link } from "react-router-dom";
 export default function HomePage() {
   const currentLanguage = useSelector(selectLanguage);
 
   return (
     <div className={scss["container-home-page"]}>
+      <p>{langDictionary.homePageFirstText[currentLanguage]}</p>
+
+      <div className={scss["img-container"]}>
+        <img src={samochodPlusTloJpg} alt="purple car" />
+      </div>
+      <p>{langDictionary.homePageSecondText[currentLanguage]}</p>
+
+      <div className={scss["img-container"]}>
+        <img src={obrazekPlacacyMezczyzna} alt="man pays the penalty" />
+      </div>
+
+      <p>{langDictionary.homePageThirdText[currentLanguage]}</p>
       <p>
-        Sprawdź, kiedy musisz zarejestrować samochód lub zgłosić jego zbycie.
+        {langDictionary.homePageFourthTextFirstPart[currentLanguage]}{" "}
+        <Link to="penalties" className={scss["link"]}>
+          {langDictionary.homePageFourthTextSecondPart[currentLanguage]}
+        </Link>
       </p>
-      <p>Nie przekrocz ustawowych terminów i uniknij kar!</p>
-      <p>Zarejestruj lub zgłoś zbycie samochodu na czas.</p>
-      <div className={scss["try-img"]}>
-        <img src={obrazekPlacacyMezczyzna} alt="" />
-      </div>
-      <div className={scss["try-img"]}>
-        <img src={samochodBezTla} alt="" />
-      </div>
-      <div className={scss["try-img"]}>
-        <img src={samochodPlusTloJpg} alt="" />
-      </div>
-      <div className={scss["try-img"]}>
-        <img src={samochodPlusTloPng} alt="" />
-      </div>
-      <div className={scss["try-img"]}>
-        <img src={samochodWKM} alt="" />
-      </div>
     </div>
   );
 }

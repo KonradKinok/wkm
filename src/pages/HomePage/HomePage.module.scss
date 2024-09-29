@@ -1,14 +1,35 @@
 .container-home-page {
         display: flex;
-        flex-wrap: wrap;
+        flex-flow: column wrap;
         padding: 30px 10px;
         width: 100%;
         background-color: var(--main-background);
         // background-image: linear-gradient(180deg, var(--main-background) 0%, var(--header-background) 50%, var(--main-background) 100%);
         color: var(--main-color);
-        font-weight: 600;
-        font-size: larger;
+        font-weight: 700;
+        font-size: x-large;
         overflow: hidden;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        .img-container {
+                width: 300px;
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+                        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+                        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+
+        .link {
+                text-decoration: underline solid;
+        }
+
+        .link:hover {
+                text-decoration: underline double;
+        }
 
         .img-container-sadman {
                 grid-area: imgSadman;
@@ -86,9 +107,4 @@
         font-weight: 500;
         font-size: 48;
         text-align: center;
-}
-
-
-.try-img {
-        width: 300px;
 }

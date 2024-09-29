@@ -24,3 +24,5 @@ Currently, two official plugins are available:
    npm i react
 7. [Axios](https://axios-http.com/docs/intro)
    npm install axios
+8. [React-datepicker](https://github.com/Hacker0x01/react-datepicker)
+   npm install react-datepicker --save

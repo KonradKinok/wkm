@@ -26,28 +26,36 @@ export const langDictionary = {
         [Languages.PL]: "Kary",
         [Languages.UA]: "Штрафи",
     },
-    navWelcome: {
-        [Languages.EN]: "Welcome",
-        [Languages.PL]: "Witaj",
+
+    // HomePage
+    homePageFirstText: {
+        [Languages.EN]: "Check when you need to register your car or report its sale.",
+        [Languages.PL]: "Sprawdź, kiedy musisz zarejestrować samochód lub zgłosić jego zbycie.",
+        [Languages.UA]: "Перевірте, коли потрібно реєструвати автомобіль або повідомляти про його продаж.",
     },
-    navLogOut: {
-        [Languages.EN]: "Log Out",
-        [Languages.PL]: "Wyloguj się",
+    homePageSecondText: {
+        [Languages.EN]: "Don't miss statutory deadlines and avoid penalties!",
+        [Languages.PL]: "Nie przekrocz ustawowych terminów i uniknij kar!",
+        [Languages.UA]: "Не перевищуйте встановлені законом терміни та уникайте штрафів!",
     },
-    navRegister: {
-        [Languages.EN]: "Register",
-        [Languages.PL]: "Zarejestruj się",
+     homePageThirdText: {
+        [Languages.EN]: "Register or report the sale of your car on time.",
+        [Languages.PL]: "Zarejestruj lub zgłoś zbycie samochodu na czas.",
+        [Languages.UA]: "Вчасно зареєструйте або повідомте про продаж автомобіля.",
     },
-    navLogIn: {
-        [Languages.EN]: "Log In",
-        [Languages.PL]: "Zaloguj się",
+     homePageFourthTextFirstPart: {
+        [Languages.EN]: "Check the date",
+        [Languages.PL]: "Sprawdź termin",
+        [Languages.UA]: "Перевірте дату",
     },
-    
-    // RegisterForm
-    registerFormTitle: {
-        [Languages.EN]: "Register form",
-        [Languages.PL]: "Formularz rejestracyjny",
+    homePageFourthTextSecondPart: {
+        [Languages.EN]: "now!",
+        [Languages.PL]: "teraz!",
+        [Languages.UA]: "зараз!",
     },
+
+
+
     emailWarning: {
         [Languages.EN]: "Email must have at least 3 characters before the @ sign.",
         [Languages.PL]: "E-mail musi mieć co najmniej 3 znaki przed znakiem @.",

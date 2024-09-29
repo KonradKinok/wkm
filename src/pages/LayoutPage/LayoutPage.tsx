@@ -11,11 +11,17 @@ import { langDictionary } from "../../components/redux/language/constans";
 import { useDispatch, useSelector } from "react-redux";
 import { setWindowDimension } from "../../components/redux/windowDimensions/sliceWindowDimensions"; // Import właściwej akcji z Reduxa
 import { setLanguage } from "../../components/redux/language/sliceLanguage";
-import { customStyles, languageOptions } from "./dataForCombobox.languages";
+import {
+  customStyles,
+  languageOptions,
+  LanguageOption,
+} from "./dataForCombobox.languages";
 import * as globalFunctions from "../../globalFunctions/functions";
-
+interface LanguageLocalStorage {
+  currentLanguage: string;
+}
 const LOCAL_STORAGE_KEY_LANGUAGE = "language";
-
+type LanguageValue = "pl" | "en" | "ua";
 const screen = {
   mobile: "mobile",
   tablet: "tablet",
@@ -25,21 +31,22 @@ const screen = {
 export const LayoutPage: React.FC = () => {
   const currentLanguage = useSelector(selectLanguage);
 
-  const defaultLanguageComboBox = () => {
+  const defaultLanguageComboBox = (): LanguageOption | undefined => {
     const languageFromLocalStorage = globalFunctions.loadLocalStorage(
       LOCAL_STORAGE_KEY_LANGUAGE,
-    );
+    ) as LanguageLocalStorage | null;
+
     if (languageFromLocalStorage) {
       const language = languageFromLocalStorage.currentLanguage;
       return languageOptions.find((option) => option.value === language);
     }
-    console.log("currentLanguage", currentLanguage);
+
     return languageOptions.find((option) => option.value === currentLanguage);
   };
   const currentScreen = useSelector(selectWindowDimensions);
   const [windowSize, setWindowSize] = useState<number | null>(null); // Zmieniono nazwę na windowSize
   const dispatch = useDispatch();
-  const handleChangeLanguage = (option) => {
+  const handleChangeLanguage = (option: SingleValue<LanguageOption>): void => {
     if (option) {
       dispatch(setLanguage(option.value));
       globalFunctions.saveLocalStorage(LOCAL_STORAGE_KEY_LANGUAGE, {

@@ -3,7 +3,10 @@ import flagPL from "../../images/comboBox/flag-pl.svg";
 import flagGB from "../../images/comboBox/flag-gb.svg";
 import flagUA from "../../images/comboBox/flag-ua.svg";
 import scss from "./LayoutPage.module.scss";
-
+export interface LanguageOption {
+  value: string;
+  label: JSX.Element;
+}
 export const customStyles = {
   option: (provided: any, state: any) => ({
     ...provided,
