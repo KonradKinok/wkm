@@ -15,16 +15,16 @@
     text-align: center;
 }
 
-
-
-
-
-
-
 .form {
     display: flex;
+    flex-flow: column nowrap;
     align-items: center;
-    gap: 4rem;
+    gap: 15px;
+}
+
+.container-dateTimePicker {
+    display: flex;
+    flex-flow: column nowrap;
 }
 
 .custom-title {
