@@ -65,6 +65,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
       showYearDropdown
       placeholderText="Wpisz datę"
       dropdownMode="select"
+      onFocus={(e) => e.target.blur()}
       calendarContainer={MyContainer}
       onCalendarClose={handleCalendarClose}
       onCalendarOpen={handleCalendarOpen}>
