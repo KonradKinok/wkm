@@ -4,6 +4,7 @@ import { getYear, getMonth } from "date-fns";
 import { pl } from "date-fns/locale/pl";
 import "react-datepicker/dist/react-datepicker.css";
 import scss from "./DateTimePicer.module.scss";
+import "./DateTimePicer.module.scss";
 import calendar from "../../images/dateTimePicker/calendar.svg";
 import { FaRegCalendarAlt } from "react-icons/fa";
 // Typowanie propsów dla MyContainer
@@ -27,11 +28,9 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
 
   const MyContainer: React.FC<MyContainerProps> = ({ className, children }) => {
     return (
-      <div style={{ padding: "8px", background: "#216ba5", color: "#fff" }}>
+      <div style={{ padding: "8px", background: "red", color: "#fff" }}>
         <CalendarContainer className={className}>
-          <div style={{ background: "#f0f0f0" }}>
-            What is your favorite day?
-          </div>
+          <div style={{ background: "yellow" }}>What is your favorite day?</div>
           <div style={{ position: "relative" }}>{children}</div>
         </CalendarContainer>
       </div>
@@ -60,13 +59,24 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
       // style
       className={scss.inputDateTimePicker} //input style
       calendarClassName={scss.inputWeek} //months style
+      weekDayClassName={() => "bg-lime"} // works
+      // dayClassName={() => scss.dayClass}
+      dayClassName={(date) => {
+        // Sprawdzenie, czy dany dzień jest wybrany
+        const isSelected =
+          dateTimePickerDate &&
+          date.toDateString() === dateTimePickerDate.toDateString();
+        return isSelected ? scss.selectedDay : scss.dayClass;
+      }}
+      popperClassName={scss.poperClass}
+      wrapperClassName={scss.wrapperClass}
       peekNextMonth
       showMonthDropdown
       showYearDropdown
       placeholderText="Wpisz datę"
       dropdownMode="select"
       onFocus={(e) => e.target.blur()}
-      calendarContainer={MyContainer}
+      // calendarContainer={MyContainer}
       onCalendarClose={handleCalendarClose}
       onCalendarOpen={handleCalendarOpen}>
       <div style={{ color: "red" }}>Don't forget to check the weather!</div>

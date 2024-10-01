@@ -1,5 +1,5 @@
 .inputDateTimePicker {
-    border-color: red;
+    border-color: rgb(137, 49, 163);
     width: 150px;
     text-align: center;
     padding: 10px;
@@ -7,5 +7,48 @@
 }
 
 .inputWeek {
-    background-color: #bde215;
+    background-color: var(--dateTimePicker-month);
+    // color: white;
+
+    .react-datepicker__week:nth-child(3n+2) {}
+
+
+}
+
+.poperClass {
+    background-color: rgb(255, 60, 0) !important;
+}
+
+.wrapperClass {
+    // background-color: darkmagenta !important;
+}
+
+.dayClass {
+    // background-color: rgb(247, 28, 20);
+    color: var(--dateTimePicker-day-color);
+}
+
+.dayClass:hover {
+    background-color: var(--dateTimePicker-day-hover-background) !important;
+    color: var(--dateTimePicker-day-hover-color) !important;
+}
+
+.dayClass:current {
+    background-color: rgb(157, 11, 241) !important;
+    color: rgb(0, 255, 106) !important;
+}
+
+.selectedDay {
+    background-color: rgb(157, 11, 241) !important;
+    /* kolor tła */
+    color: rgb(0, 255, 106) !important;
+    /* kolor tekstu */
+
+    /* Użyj pseudo-elementów do stylizacji */
+    &:hover {
+        background-color: rgb(100, 0, 200) !important;
+        /* kolor tła po najechaniu */
+        color: rgb(255, 255, 255) !important;
+        /* kolor tekstu po najechaniu */
+    }
 }

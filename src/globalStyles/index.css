@@ -35,9 +35,16 @@
     /* form */
     --form-color: rgb(0, 100, 255);
     --form-field-background: rgb(255, 255, 255);
-    --form-button-color: rgb(255, 255, 255);
+    --form-button-color: rgb(224, 255, 255);
     --form-button-background-first: rgb(0, 0, 255);
     --form-button-background-second: rgb(0, 100, 255);
+    
+    /* dateTimePicker */
+    --dateTimePicker-month: rgb(175, 238, 238);/*PaleTurquoise */
+    --dateTimePicker-day-color: rgb(75, 0, 130);/*Indygo */
+    --dateTimePicker-day-hover-background:rgb(75, 0, 130);/*Indygo */
+    --dateTimePicker-day-hover-color: rgb(255, 255, 255);/*LightCyan */
+    
     /* footer */
     --footer-background: rgb(75, 0, 130); /*Indygo */
     --footer-text-color: rgb(224, 255, 255);/*LightCyan */
