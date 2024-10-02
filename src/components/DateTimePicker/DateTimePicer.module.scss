@@ -33,10 +33,10 @@
     color: var(--dateTimePicker-day-hover-color) !important;
 }
 
-.dayClass:current {
-    background-color: rgb(157, 11, 241) !important;
-    color: rgb(0, 255, 106) !important;
-}
+// .dayClass:current {
+//     background-color: rgb(157, 11, 241) !important;
+//     color: rgb(0, 255, 106) !important;
+// }
 
 .selectedDay {
     background-color: rgb(157, 11, 241) !important;
@@ -56,4 +56,10 @@
 
 .weekDayClassName {
     background-color: red;
+}
+
+.customInput {
+    background-color: blue;
+    color: white;
+    cursor: pointer;
 }

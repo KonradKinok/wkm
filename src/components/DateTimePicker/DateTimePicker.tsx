@@ -16,6 +16,12 @@ interface DateTimePickerProps {
   dateTimePickerDate: Date | null;
   setDateTimePickerDate: React.Dispatch<React.SetStateAction<Date | null>>;
 }
+
+interface CustomInputProps {
+  value?: string;
+  onClick?: () => void;
+  className?: string;
+}
 export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   dateTimePickerDate,
   setDateTimePickerDate,
@@ -44,7 +50,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
       </div>
     );
   };
-  const ExampleCustomInput = forwardRef(
+  const ExampleCustomInput = forwardRef<HTMLButtonElement, CustomInputProps>(
     ({ value, onClick, className }, ref) => (
       <button className={className} onClick={onClick} ref={ref}>
         {value}
@@ -53,7 +59,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   );
   return (
     <DatePicker
-      customInput={<ExampleCustomInput className="example-custom-input" />}
+      // customInput={<ExampleCustomInput className={scss.customInput} />}
       dateFormat="dd.MM.yyyy"
       showIcon
       toggleCalendarOnIconClick
@@ -94,7 +100,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
       dropdownMode="select"
       // onFocus={(e) => e.target.blur()}
       // calendarContainer={MyContainer}
-
+      readonly="readonly"
       // onCalendarClose={handleCalendarClose}
       onCalendarOpen={handleCalendarOpen}>
       <div style={{ color: "red" }}>Don't forget to check the weather!</div>
