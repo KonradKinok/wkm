@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 import DatePicker, { CalendarContainer } from "react-datepicker";
 import { getYear, getMonth } from "date-fns";
 import { pl } from "date-fns/locale/pl";
@@ -27,7 +27,9 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
     // Usunięcie fokusu z pola po zamknięciu kalendarza
     const inputElement = document.querySelector('input[name="dateTimePicker"]');
     if (inputElement) {
-      (inputElement as HTMLElement).blur();
+      setTimeout(() => {
+        (inputElement as HTMLElement).blur();
+      }, 100); // small delay to allow the picker to close properly
     }
   };
   const handleCalendarOpen = () => console.log("Calendar opened");
@@ -42,9 +44,16 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
       </div>
     );
   };
-
+  const ExampleCustomInput = forwardRef(
+    ({ value, onClick, className }, ref) => (
+      <button className={className} onClick={onClick} ref={ref}>
+        {value}
+      </button>
+    ),
+  );
   return (
     <DatePicker
+      customInput={<ExampleCustomInput className="example-custom-input" />}
       dateFormat="dd.MM.yyyy"
       showIcon
       toggleCalendarOnIconClick
@@ -76,15 +85,17 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
       }}
       popperClassName={scss.poperClass}
       wrapperClassName={scss.wrapperClass}
+      monthClassName={() => scss.customMonthDropdown} // Styl dla dropdown wyboru miesiąca
+      yearClassName={() => scss.customYearDropdown} // Styl dla dropdown wyboru roku
       peekNextMonth
       showMonthDropdown
       showYearDropdown
       placeholderText="Wpisz datę"
       dropdownMode="select"
-      onFocus={(e) => e.target.blur()}
+      // onFocus={(e) => e.target.blur()}
       // calendarContainer={MyContainer}
 
-      onCalendarClose={handleCalendarClose}
+      // onCalendarClose={handleCalendarClose}
       onCalendarOpen={handleCalendarOpen}>
       <div style={{ color: "red" }}>Don't forget to check the weather!</div>
     </DatePicker>
