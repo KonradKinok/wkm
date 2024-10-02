@@ -20,9 +20,15 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   dateTimePickerDate,
   setDateTimePickerDate,
 }) => {
-  // const [startDate, setStartDate] = useState<Date | null>(new Date());
+  // Usunięcie fokusu z pola po zamknięciu kalendarza
   const handleCalendarClose = () => {
     console.log("Calendar closed");
+
+    // Usunięcie fokusu z pola po zamknięciu kalendarza
+    const inputElement = document.querySelector('input[name="dateTimePicker"]');
+    if (inputElement) {
+      (inputElement as HTMLElement).blur();
+    }
   };
   const handleCalendarOpen = () => console.log("Calendar opened");
 
@@ -59,7 +65,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
       // style
       className={scss.inputDateTimePicker} //input style
       calendarClassName={scss.inputWeek} //months style
-      weekDayClassName={() => "bg-lime"} // works
+      weekDayClassName={() => scss.weekDayClassName} // works
       // dayClassName={() => scss.dayClass}
       dayClassName={(date) => {
         // Sprawdzenie, czy dany dzień jest wybrany
@@ -77,6 +83,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
       dropdownMode="select"
       onFocus={(e) => e.target.blur()}
       // calendarContainer={MyContainer}
+
       onCalendarClose={handleCalendarClose}
       onCalendarOpen={handleCalendarOpen}>
       <div style={{ color: "red" }}>Don't forget to check the weather!</div>
