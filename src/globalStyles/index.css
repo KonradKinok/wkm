@@ -35,16 +35,34 @@
     /* form */
     --form-color: rgb(0, 100, 255);
     --form-field-background: rgb(255, 255, 255);
+    --form-radiobutton-checked-background: rgb(75, 0, 130);
+    --form-radiobutton-unchecked-background: rgba(75, 0, 130,0.2);
+    --form-radiobutton-unchecked-hover-background: rgba(75, 0, 130, 0.5);
     --form-button-color: rgb(224, 255, 255);
-    --form-button-background-first: rgb(0, 0, 255);
-    --form-button-background-second: rgb(0, 100, 255);
+    --form-button-background-first: rgb(75, 0, 130);/*Indygo */
+    --form-button-background-second: rgb(153, 50, 204);/*DarkOrchid */
     
     /* dateTimePicker */
     --dateTimePicker-month: rgb(175, 238, 238);/*PaleTurquoise */
     --dateTimePicker-day-color: rgb(75, 0, 130);/*Indygo */
+    --dateTimePicker-day-hover-color: rgb(224, 255, 255);/*LightCyan */
     --dateTimePicker-day-hover-background:rgb(75, 0, 130);/*Indygo */
-    --dateTimePicker-day-hover-color: rgb(255, 255, 255);/*LightCyan */
+    --dateTimePicker-day-selected-color: rgb(224, 255, 255);/*LightCyan */
+    --dateTimePicker-day-selected-background: rgb(153, 50, 204);/*DarkOrchid */
+    --dateTimePicker-weekday-color: rgb(75, 0, 130);/*Indygo */
+    --dateTimePicker-todaybutton-color: rgb(224, 255, 255);/*LightCyan */
+    --dateTimePicker-todaybutton-background: rgb(75, 0, 130);/*Indygo */
+    --dateTimePicker-todaybutton-hover-background: rgb(153, 50, 204);/*DarkOrchid */
+        
+    /* dateTimePicker - button*/
+    --dateTimePicker-input-button-color: rgb(75, 0, 130);/*Indygo */
+    --dateTimePicker-input-button-background: rgb(224, 255, 255);/*LightCyan */
+    --dateTimePicker-input-button-border: rgb(75, 0, 130);/*Indygo */
+    --dateTimePicker-input-button-hover-background: rgb(175, 238, 238);/*PaleTurquoise */
+       
+    /* show-button */
     
+            
     /* footer */
     --footer-background: rgb(75, 0, 130); /*Indygo */
     --footer-text-color: rgb(224, 255, 255);/*LightCyan */

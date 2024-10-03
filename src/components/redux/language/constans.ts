@@ -54,32 +54,50 @@ export const langDictionary = {
         [Languages.UA]: "зараз!",
     },
 
-
-
-    emailWarning: {
-        [Languages.EN]: "Email must have at least 3 characters before the @ sign.",
-        [Languages.PL]: "E-mail musi mieć co najmniej 3 znaki przed znakiem @.",
+// FormPenalties
+    formPenaltiesStartDate: {
+        [Languages.EN]: "Select the date of the contract, the date of importing the vehicle to Poland:",
+        [Languages.PL]: "Wybierz datę sporządzenia umowy, datę sprowadzenia pojazdu do Polski:",
+        [Languages.UA]: "Виберіть дату складання договору та дату привезення автомобіля до Польщі:",
     },
-    emailWarning2: {
-        [Languages.EN]: "E-mail must contain the @ sign.",
-        [Languages.PL]: "E-mail musi zawierać znak @.",
+    formPenaltiesSoldVehicle: {
+        [Languages.EN]: "I sold the vehicle:",
+        [Languages.PL]: "Sprzedałem pojazd:",
+        [Languages.UA]: "Я продав автомобіль:",
     },
-    passwordWarning: {
-        [Languages.EN]: "The password must contain at least 7 characters.",
-        [Languages.PL]: "Hasło musi zawierać co najmniej 7 znaków.",
+   formPenaltiesBuyVehicle: {
+        [Languages.EN]: "I bought/imported a vehicle:",
+        [Languages.PL]: "Kupiłem/sprowadziłem pojazd:",
+        [Languages.UA]: "Я купив/імпортував автомобіль:",
     },
-    confirmPasswordWarning: {
-        [Languages.EN]: "The passwords don't match.",
-        [Languages.PL]: "Hasła nie pasują.",
+    formPenaltiesNaturalPerson: {
+        [Languages.EN]: "I am a natural person:",
+        [Languages.PL]: "Jestem osobą fizyczną:",
+        [Languages.UA]: "Я фізична особа:",
     },
-    userField: {
-        [Languages.EN]: "Username",
-        [Languages.PL]: "Nazwa użytkownika",
+    formPenaltiesLegalPerson: {
+        [Languages.EN]: "I am an entrepreneur trading in vehicles:",
+        [Languages.PL]: "Jestem przedsiębiorcą prowadzącym obrót pojazdami:",
+        [Languages.UA]: "Я підприємець, займаюся транспортними засобами:",
     },
-    emailField: {
-        [Languages.EN]: "E-mail",
-        [Languages.PL]: "E-mail",
+    formPenaltiesDetailedData: {
+        [Languages.EN]: "Show detailed data:",
+        [Languages.PL]: "Pokaż szczegółowe dane:",
+        [Languages.UA]: "Показати докладні дані:",
     },
+    formPenaltiesButtonShow: {
+        [Languages.EN]: "Show",
+        [Languages.PL]: "Pokaż",
+        [Languages.UA]: "Показати",
+    },
+    
+    // DateTimePicker
+    dateTimePickerButtonToday: {
+        [Languages.EN]: "Today",
+        [Languages.PL]: "Dzisiaj",
+        [Languages.UA]: "Сьогодні",
+    },
+    
     passwordField: {
         [Languages.EN]: "Password",
         [Languages.PL]: "Hasło",

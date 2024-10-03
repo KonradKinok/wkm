@@ -1,65 +1,96 @@
-.inputDateTimePicker {
-    border-color: rgb(137, 49, 163);
-    width: 150px;
-    text-align: center;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.inputWeek {
+.month-container {
     background-color: var(--dateTimePicker-month);
-    // color: white;
+    user-select: none;
+}
 
-    .react-datepicker__week:nth-child(3n+2) {}
-
+.drop-down-control {
+    border: 2px var(--dateTimePicker-input-button-border) solid;
+    border-radius: 10px;
 
 }
 
-.poperClass {
-    background-color: rgb(255, 60, 0) !important;
-}
+.wrapperClass {}
 
-.wrapperClass {
-    // background-color: darkmagenta !important;
-}
-
-.dayClass {
-    // background-color: rgb(247, 28, 20);
+.day-class {
     color: var(--dateTimePicker-day-color);
-}
 
-.dayClass:hover {
-    background-color: var(--dateTimePicker-day-hover-background) !important;
-    color: var(--dateTimePicker-day-hover-color) !important;
-}
-
-// .dayClass:current {
-//     background-color: rgb(157, 11, 241) !important;
-//     color: rgb(0, 255, 106) !important;
-// }
-
-.selectedDay {
-    background-color: rgb(157, 11, 241) !important;
-    /* kolor tła */
-    color: rgb(0, 255, 106) !important;
-    /* kolor tekstu */
-
-    /* Użyj pseudo-elementów do stylizacji */
     &:hover {
-        background-color: rgb(100, 0, 200) !important;
-        /* kolor tła po najechaniu */
-        color: rgb(255, 255, 255) !important;
-        /* kolor tekstu po najechaniu */
+        background-color: var(--dateTimePicker-day-hover-background) !important;
+        color: var(--dateTimePicker-day-hover-color) !important;
+    }
+}
+
+.selected-day {
+    color: var(--dateTimePicker-day-selected-color) !important;
+    background-color: var(--dateTimePicker-day-selected-background) !important;
+
+    &:hover {
+        color: var(--dateTimePicker-day-hover-color) !important;
+        background-color: var(--dateTimePicker-day-hover-background) !important;
     }
 }
 
 
-.weekDayClassName {
-    background-color: red;
+.week-day {
+    color: var(--dateTimePicker-weekday-color);
 }
 
-.customInput {
-    background-color: blue;
-    color: white;
+.input-button {
+    border: 2px var(--dateTimePicker-input-button-border) solid;
+    border-radius: 5px;
+    background-color: var(--dateTimePicker-input-button-background);
+    color: var(--dateTimePicker-input-button-color);
+    width: 150px;
+    text-align: center;
+    padding: 10px;
     cursor: pointer;
+    user-select: none;
+    font-weight: 600;
+    transition: background-color .25s cubic-bezier(.4, 0, .2, 1);
+}
+
+.input-button:hover {
+    background-color: var(--dateTimePicker-input-button-hover-background);
+}
+
+.icon {
+    cursor: pointer;
+}
+
+:global {
+    .react-datepicker__today-button {
+        background-color: var(--dateTimePicker-todaybutton-background);
+        color: var(--dateTimePicker-todaybutton-color);
+
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color .25s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .react-datepicker__today-button:hover {
+        background-color: var(--dateTimePicker-todaybutton-hover-background);
+        /* Zmiana koloru tła na hover */
+    }
+
+    .react-datepicker__current-month {
+        color: var(--dateTimePicker-day-color);
+        padding-bottom: 5px;
+    }
+
+    .react-datepicker__day--outside-month {
+        color: var(--dateTimePicker-outside-month-day-color); // Kolor dni z poprzedniego/następnego miesiąca
+        opacity: 0.5; // Możesz również dodać przezroczystość, aby je wyróżnić
+    }
+
+    .react-datepicker__day--outside-month:hover {
+        color: var(--dateTimePicker-outside-month-day-hover-color); // Kolor na hover
+        background-color: var(--dateTimePicker-outside-month-day-hover-background); // Tło na hover
+    }
+
+    // Opcjonalnie możesz dodać inne style
+    .react-datepicker__day--outside-month.selected-day {
+        color: var(--dateTimePicker-outside-month-selected-color) !important; // Kolor wybranego dnia z innego miesiąca
+        background-color: var(--dateTimePicker-outside-month-selected-background) !important; // Tło wybranego dnia z innego miesiąca
+    }
 }

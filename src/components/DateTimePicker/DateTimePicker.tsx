@@ -1,12 +1,18 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import DatePicker, { CalendarContainer } from "react-datepicker";
 import { getYear, getMonth } from "date-fns";
 import { pl } from "date-fns/locale/pl";
+import { enGB } from "date-fns/locale/en-GB";
+import { uk } from "date-fns/locale/uk";
 import "react-datepicker/dist/react-datepicker.css";
 import scss from "./DateTimePicer.module.scss";
 import "./DateTimePicer.module.scss";
 import calendar from "../../images/dateTimePicker/calendar.svg";
 import { FaRegCalendarAlt } from "react-icons/fa";
+import { selectLanguage } from "../redux/language/selectorsLanguage";
+import { langDictionary } from "../redux/language/constans";
+import { Languages } from "../redux/language/constans";
+import { useSelector } from "react-redux";
 // Typowanie propsów dla MyContainer
 interface MyContainerProps {
   className?: string;
@@ -26,19 +32,35 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   dateTimePickerDate,
   setDateTimePickerDate,
 }) => {
-  // Usunięcie fokusu z pola po zamknięciu kalendarza
+  const currentLanguage = useSelector(selectLanguage);
+  const [calendarLanguage, setCalendarLanguage] = useState(pl);
+  // let calendarLanguage;
+
   const handleCalendarClose = () => {
     console.log("Calendar closed");
-
-    // Usunięcie fokusu z pola po zamknięciu kalendarza
-    const inputElement = document.querySelector('input[name="dateTimePicker"]');
-    if (inputElement) {
-      setTimeout(() => {
-        (inputElement as HTMLElement).blur();
-      }, 100); // small delay to allow the picker to close properly
-    }
   };
   const handleCalendarOpen = () => console.log("Calendar opened");
+
+  // useEffect(() => {
+  //   console.log("currentLanguage:", currentLanguage);
+  //   if (currentLanguage == Languages.PL) {
+  //     calendarLanguage = pl;
+  //   } else if (currentLanguage == Languages.EN) {
+  //     calendarLanguage = enGB;
+  //   } else if (currentLanguage == Languages.UA) {
+  //     calendarLanguage = uk;
+  //   }
+  //   console.log("currentLanguage:", currentLanguage);
+  // }, [currentLanguage]);
+  useEffect(() => {
+    if (currentLanguage === Languages.PL) {
+      setCalendarLanguage(pl);
+    } else if (currentLanguage === Languages.EN) {
+      setCalendarLanguage(enGB);
+    } else if (currentLanguage === Languages.UA) {
+      setCalendarLanguage(uk);
+    }
+  }, [currentLanguage]);
 
   const MyContainer: React.FC<MyContainerProps> = ({ className, children }) => {
     return (
@@ -52,14 +74,14 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   };
   const ExampleCustomInput = forwardRef<HTMLButtonElement, CustomInputProps>(
     ({ value, onClick, className }, ref) => (
-      <button className={className} onClick={onClick} ref={ref}>
-        {value}
+      <button type="button" className={className} onClick={onClick} ref={ref}>
+        {value ? value : "Wybierz datę"}
       </button>
     ),
   );
   return (
     <DatePicker
-      // customInput={<ExampleCustomInput className={scss.customInput} />}
+      customInput={<ExampleCustomInput className={scss["input-button"]} />}
       dateFormat="dd.MM.yyyy"
       showIcon
       toggleCalendarOnIconClick
@@ -67,29 +89,22 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
       onChange={(date) => setDateTimePickerDate(date)}
       openToDate={new Date(`${new Date().getFullYear()}/01/01`)}
       minDate={new Date("2020/01/01")}
-      todayButton="Dzisiaj"
+      todayButton={langDictionary.dateTimePickerButtonToday[currentLanguage]}
       name="dateTimePicker"
-      // onChangeRaw={(event) => handleChangeRaw(event.target.value)}
-      locale={pl}
-      // icon={
-      //   <svg className={scss.iconContainer}>
-      //     <use xlinkHref={`${calendar}#calendar`} />
-      //   </svg>
-      // }
-      icon={<FaRegCalendarAlt />}
+      locale={calendarLanguage}
+      icon={<FaRegCalendarAlt className={scss.icon} />}
       // style
-      className={scss.inputDateTimePicker} //input style
-      calendarClassName={scss.inputWeek} //months style
-      weekDayClassName={() => scss.weekDayClassName} // works
-      // dayClassName={() => scss.dayClass}
+      // className={scss.inputDateTimePicker}
+      calendarClassName={scss["month-container"]} //months style
+      weekDayClassName={() => scss["week-day"]} // works
       dayClassName={(date) => {
         // Sprawdzenie, czy dany dzień jest wybrany
         const isSelected =
           dateTimePickerDate &&
           date.toDateString() === dateTimePickerDate.toDateString();
-        return isSelected ? scss.selectedDay : scss.dayClass;
+        return isSelected ? scss["selected-day"] : scss["day-class"];
       }}
-      popperClassName={scss.poperClass}
+      popperClassName={scss["drop-down-control"]}
       wrapperClassName={scss.wrapperClass}
       monthClassName={() => scss.customMonthDropdown} // Styl dla dropdown wyboru miesiąca
       yearClassName={() => scss.customYearDropdown} // Styl dla dropdown wyboru roku
@@ -98,12 +113,11 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
       showYearDropdown
       placeholderText="Wpisz datę"
       dropdownMode="select"
-      // onFocus={(e) => e.target.blur()}
       // calendarContainer={MyContainer}
       readonly="readonly"
       // onCalendarClose={handleCalendarClose}
       onCalendarOpen={handleCalendarOpen}>
-      <div style={{ color: "red" }}>Don't forget to check the weather!</div>
+      {/* <div style={{ color: "red" }}>Don't forget to check the weather!</div> */}
     </DatePicker>
   );
 };
