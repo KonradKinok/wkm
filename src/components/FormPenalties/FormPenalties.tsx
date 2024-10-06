@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DateTimePicker } from "../../components/DateTimePicker/DateTimePicker";
 import scss from "./FormPenalties.module.scss";
 import * as calculator from "../../globalFunctions/calculator";
@@ -7,11 +7,14 @@ import { selectLanguage } from "../redux/language/selectorsLanguage";
 import { langDictionary } from "../redux/language/constans";
 import { useSelector } from "react-redux";
 
-interface ListEntry {
-  day: string; // Możesz dostosować typ w zależności od oczekiwanego formatu
-  displayedData: string; // Możesz dostosować typ w zależności od oczekiwanego formatu
+export interface ListEntry {
+  nextDayOfTheDeadline: string; // Możesz dostosować typ w zależności od oczekiwanego formatu
+  nextDay: string;
+  nextData: string; // Możesz dostosować typ w zależności od oczekiwanego formatu
+  nameDayOfWeek: string;
+  description: string;
 }
-interface FormValues {
+export interface FormValues {
   selectedDate: Date | null;
   sold: boolean;
   bought: boolean;
@@ -26,6 +29,7 @@ interface FormPenaltiesProps {
   formValues: FormValues; // Typ formValues (interfejs już zdefiniowany)
   setFormValues: React.Dispatch<React.SetStateAction<FormValues>>; // Funkcja do ustawiania wartości formularza
 }
+
 let temp: { listOfDates: ListEntry[]; startDate: Date } | null = null;
 export default function FormPenalties({
   dateTimePickerDate,
@@ -46,6 +50,13 @@ export default function FormPenalties({
   //     isLegalPerson: false,
   //     detailedData: false,
   //   });
+
+  useEffect(() => {
+    setFormValues((prevData) => ({
+      ...prevData,
+      selectedDate: dateTimePickerDate,
+    }));
+  }, [dateTimePickerDate]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Zapobiega domyślnej akcji wysłania formularza
@@ -221,7 +232,8 @@ export default function FormPenalties({
       <ul>
         {temp?.listOfDates.map((listOfDates: ListEntry, index: number) => (
           <li key={index}>
-            {listOfDates.day} {listOfDates.displayedData}
+            {listOfDates.nextDayOfTheDeadline} {listOfDates.nextData}
+            {listOfDates.nameDayOfWeek} {listOfDates.description}
           </li>
         ))}
       </ul>

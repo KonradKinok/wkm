@@ -3,6 +3,7 @@ import { DateTimePicker } from "../../components/DateTimePicker/DateTimePicker";
 import scss from "./PenaltiesPage.module.scss";
 import * as calculator from "../../globalFunctions/calculator";
 import FormPenalties from "../../components/FormPenalties/FormPenalties";
+import ListOfDays from "../../components/ListOfDates/ListOfDays";
 import { useSelector } from "react-redux";
 interface ListEntry {
   day: string; // Możesz dostosować typ w zależności od oczekiwanego formatu
@@ -34,6 +35,12 @@ export default function PenaltiesPage() {
   return (
     <div className={scss["container-penalties-page"]}>
       <FormPenalties
+        dateTimePickerDate={dateTimePickerDate}
+        setDateTimePickerDate={setDateTimePickerDate}
+        formValues={formValues}
+        setFormValues={setFormValues}
+      />
+      <ListOfDays
         dateTimePickerDate={dateTimePickerDate}
         setDateTimePickerDate={setDateTimePickerDate}
         formValues={formValues}
