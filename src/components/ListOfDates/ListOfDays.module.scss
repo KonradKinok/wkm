@@ -1,0 +1,40 @@
+.container-list-of-days {
+
+    display: flex;
+    flex-flow: column nowrap;
+
+    // row-gap: 10px;
+
+    // .item-list-of-days {
+    //     display: grid;
+    //     max-width: calc(100vw - 10px);
+    //     grid-template-columns: 10% 40% 10% 40%;
+    //     column-gap: 5px;
+    //     list-style: none;
+    //     align-items: center;
+    //     justify-content: start;
+    //     border-bottom: 1px solid #070707;
+    //     text-transform: capitalize;
+    // }
+    .item-list-of-days {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 15px;
+        justify-content: space-between;
+    }
+
+    .icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .icon-FaRegCalendar {
+        color: red;
+
+    }
+
+    .icon-FaRegCalendarPlus {
+        color: rgb(43, 255, 0);
+
+    }
+}

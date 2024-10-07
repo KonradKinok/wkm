@@ -17,35 +17,13 @@ interface FormValues {
   isLegalPerson: boolean;
   detailedData: boolean;
 }
-let temp: { listOfDates: ListEntry[]; startDate: Date } | null = null;
+
 export default function PenaltiesPage() {
-  const [dateTimePickerDate, setDateTimePickerDate] = useState<Date | null>(
-    new Date(),
-  );
-
-  const [formValues, setFormValues] = useState<FormValues>({
-    selectedDate: null as Date | null, // Zmieniamy typ na Date | null
-    sold: true,
-    bought: false,
-    isNaturalPerson: true,
-    isLegalPerson: false,
-    detailedData: false,
-  });
-
+  const [calculatedData, setCalculatedData] = useState(null);
   return (
     <div className={scss["container-penalties-page"]}>
-      <FormPenalties
-        dateTimePickerDate={dateTimePickerDate}
-        setDateTimePickerDate={setDateTimePickerDate}
-        formValues={formValues}
-        setFormValues={setFormValues}
-      />
-      <ListOfDays
-        dateTimePickerDate={dateTimePickerDate}
-        setDateTimePickerDate={setDateTimePickerDate}
-        formValues={formValues}
-        setFormValues={setFormValues}
-      />
+      <FormPenalties setCalculatedData={setCalculatedData} />
+      <ListOfDays calculatedData={calculatedData} />
     </div>
   );
 }

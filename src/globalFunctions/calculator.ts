@@ -1,4 +1,5 @@
-import { ListEntry } from "../components/FormPenalties/FormPenalties";
+import { FaRegCalendar } from "react-icons/fa";
+import { FaRegCalendarPlus } from "react-icons/fa";
 
 interface CalculationNumberOfDays {
   selectedDate: Date;
@@ -8,17 +9,15 @@ interface CalculationNumberOfDays {
   isLegalPerson: boolean;
   detailedData: boolean;
 }
-
-const daysOfTheWeek = [
-  "Niedziela",
-  "Poniedziałek",
-  "Wtorek",
-  "Środa",
-  "Czwartek",
-  "Piątek",
-  "Sobota",
-];
-
+export interface ListEntry {
+  nextDayOfTheDeadline: string; // Możesz dostosować typ w zależności od oczekiwanego formatu
+  nextDay: string;
+  nextData: string; // Możesz dostosować typ w zależności od oczekiwanego formatu
+  nameDayOfWeek: string;
+  description: string;
+  iconName: React.ElementType;
+  iconClass: string;
+}
 export function calculationNumberOfDays(
   selectedDate: Date | null,
   sold: boolean,
@@ -81,11 +80,17 @@ export function calculationNumberOfDays(
         const description = sold ? "data umowy" : "data umowy/sprowadzenia";
 
         listOfDates.push({
+          nextDay: `${nextDay.toString().padStart(3, '0')}`,
           nextDayOfTheDeadline: `${nextDayOfTheDeadline}`, // Numerowanie dni
-          nextDay: `${nextDay}`,
-          nextData: currentDay.toLocaleDateString(), // Formatowanie daty
+           nextData: currentDay.toLocaleDateString("pl-PL", {
+          day: "2-digit", 
+          month: "2-digit", 
+          year: "numeric", 
+        }),
           nameDayOfWeek: dayOfWeekString,
           description: `${description}`,
+          iconName: FaRegCalendar,
+          iconClass: "icon-FaRegCalendar",
         });
         nextDayOfTheDeadline++;
         nextDay++;
@@ -95,11 +100,17 @@ export function calculationNumberOfDays(
         const description = "ostatni termin";
 
         listOfDates.push({
+          nextDay: `${nextDay.toString().padStart(3, '0')}`,
           nextDayOfTheDeadline: `${nextDayOfTheDeadline}`, // Numerowanie dni
-          nextDay: `${nextDay}`,
-          nextData: currentDay.toLocaleDateString(), // Formatowanie daty
+           nextData: currentDay.toLocaleDateString("pl-PL", {
+          day: "2-digit", 
+          month: "2-digit", 
+          year: "numeric", 
+        }),
           nameDayOfWeek: dayOfWeekString,
           description: `${description}`,
+          iconName: FaRegCalendar,
+          iconClass: "",
         });
         nextDayOfTheDeadline++;
         nextDay++;
@@ -111,22 +122,34 @@ export function calculationNumberOfDays(
           : `Kwota I kary: ${firstPenaltyRegistrationAmount}`;
 
         listOfDates.push({
+          nextDay: `${nextDay.toString().padStart(3, '0')}`,
           nextDayOfTheDeadline: `${nextDayOfTheDeadline}`, // Numerowanie dni
-          nextDay: `${nextDay}`,
-          nextData: currentDay.toLocaleDateString(), // Formatowanie daty
+           nextData: currentDay.toLocaleDateString("pl-PL", {
+          day: "2-digit", // Dwucyfrowy dzień
+          month: "2-digit", // Dwucyfrowy miesiąc
+          year: "numeric", // Pełny rok
+        }), // Formatowanie daty
           nameDayOfWeek: dayOfWeekString,
           description: `${description}`,
+          iconName: FaRegCalendarPlus,
+          iconClass: "icon-FaRegCalendarPlus",
         });
         nextDayOfTheDeadline++;
         nextDay++;
         continue;
       }
       listOfDates.push({
+        nextDay: `${nextDay.toString().padStart(3, '0')}`,
         nextDayOfTheDeadline: `${nextDayOfTheDeadline}`, // Numerowanie dni
-        nextDay: `${nextDay}`,
-        nextData: currentDay.toLocaleDateString(),
+        nextData: currentDay.toLocaleDateString("pl-PL", {
+          day: "2-digit", // Dwucyfrowy dzień
+          month: "2-digit", // Dwucyfrowy miesiąc
+          year: "numeric", // Pełny rok
+        }),
         nameDayOfWeek: dayOfWeekString,
         description: `${nextDayOfTheDeadline} dzień terminu`,
+        iconName: FaRegCalendar,
+        iconClass: "",
       });
       nextDayOfTheDeadline++;
       nextDay++;

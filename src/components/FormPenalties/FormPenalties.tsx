@@ -7,14 +7,7 @@ import { selectLanguage } from "../redux/language/selectorsLanguage";
 import { langDictionary } from "../redux/language/constans";
 import { useSelector } from "react-redux";
 
-export interface ListEntry {
-  nextDayOfTheDeadline: string; // Możesz dostosować typ w zależności od oczekiwanego formatu
-  nextDay: string;
-  nextData: string; // Możesz dostosować typ w zależności od oczekiwanego formatu
-  nameDayOfWeek: string;
-  description: string;
-}
-export interface FormValues {
+interface FormValues {
   selectedDate: Date | null;
   sold: boolean;
   bought: boolean;
@@ -23,33 +16,26 @@ export interface FormValues {
   detailedData: boolean;
 }
 
-interface FormPenaltiesProps {
-  dateTimePickerDate: Date | null; // Typ Date lub null
-  setDateTimePickerDate: React.Dispatch<React.SetStateAction<Date | null>>; // Funkcja do ustawiania daty
-  formValues: FormValues; // Typ formValues (interfejs już zdefiniowany)
-  setFormValues: React.Dispatch<React.SetStateAction<FormValues>>; // Funkcja do ustawiania wartości formularza
+export interface FormPenaltiesProps {
+  setCalculatedData: (data: any) => void; // Zdefiniuj typ dla setCalculatedData
 }
 
-let temp: { listOfDates: ListEntry[]; startDate: Date } | null = null;
 export default function FormPenalties({
-  dateTimePickerDate,
-  setDateTimePickerDate,
-  formValues,
-  setFormValues,
+  setCalculatedData,
 }: FormPenaltiesProps) {
   const currentLanguage = useSelector(selectLanguage);
-  //   const [dateTimePickerDate, setDateTimePickerDate] = useState<Date | null>(
-  //     new Date(),
-  //   );
+  const [dateTimePickerDate, setDateTimePickerDate] = useState<Date | null>(
+    new Date(),
+  );
 
-  //   const [formValues, setFormValues] = useState<FormValues>({
-  //     selectedDate: null as Date | null, // Zmieniamy typ na Date | null
-  //     sold: true,
-  //     bought: false,
-  //     isNaturalPerson: true,
-  //     isLegalPerson: false,
-  //     detailedData: false,
-  //   });
+  const [formValues, setFormValues] = useState<FormValues>({
+    selectedDate: null, // Zmieniamy typ na Date | null
+    sold: true,
+    bought: false,
+    isNaturalPerson: true,
+    isLegalPerson: false,
+    detailedData: false,
+  });
 
   useEffect(() => {
     setFormValues((prevData) => ({
@@ -82,7 +68,7 @@ export default function FormPenalties({
     console.log("Legal Person:", isLegalPerson);
     console.log("Detailed Data:", detailedData);
 
-    temp = calculator.calculationNumberOfDays(
+    const calculatedDataFunction = calculator.calculationNumberOfDays(
       selectedDate,
       sold,
       bought,
@@ -90,7 +76,11 @@ export default function FormPenalties({
       isLegalPerson,
       detailedData,
     );
-    console.log("temp typ", typeof temp);
+    console.log(
+      "calculator.calculationNumberOfDays",
+      calculatedDataFunction?.startDate,
+    );
+    setCalculatedData(calculatedDataFunction);
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked, id } = e.target;
@@ -228,15 +218,6 @@ export default function FormPenalties({
       <p>Jestem osobą fizyczną: {formValues.isNaturalPerson ? "Tak" : "Nie"}</p>
       <p>Jestem przedsiębiorcą: {formValues.isLegalPerson ? "Tak" : "Nie"}</p>
       <p>Pokaż szczegółowe dane: {formValues.detailedData ? "Tak" : "Nie"}</p>
-      <p>Pokaż: {temp ? temp.startDate.toLocaleDateString() : "Brak danych"}</p>
-      <ul>
-        {temp?.listOfDates.map((listOfDates: ListEntry, index: number) => (
-          <li key={index}>
-            {listOfDates.nextDayOfTheDeadline} {listOfDates.nextData}
-            {listOfDates.nameDayOfWeek} {listOfDates.description}
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
