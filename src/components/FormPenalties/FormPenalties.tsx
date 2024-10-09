@@ -42,6 +42,7 @@ export default function FormPenalties({
       ...prevData,
       selectedDate: dateTimePickerDate,
     }));
+    setCalculatedData(null);
   }, [dateTimePickerDate]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -75,6 +76,7 @@ export default function FormPenalties({
       isNaturalPerson,
       isLegalPerson,
       detailedData,
+      currentLanguage,
     );
     console.log(
       "calculator.calculationNumberOfDays",
@@ -82,6 +84,9 @@ export default function FormPenalties({
     );
     setCalculatedData(calculatedDataFunction);
   };
+  useEffect(() => {
+    setCalculatedData(null);
+  }, [currentLanguage]);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked, id } = e.target;
 
@@ -116,6 +121,7 @@ export default function FormPenalties({
         detailedData: checked, // Aktualizowanie wartości checkboxa
       }));
     }
+    setCalculatedData(null);
   };
 
   return (
@@ -206,18 +212,6 @@ export default function FormPenalties({
           </button>
         </div>
       </form>
-      <p>{dateTimePickerDate ? dateTimePickerDate.toDateString() : ""}</p>
-      <p>
-        Wybrana data:{" "}
-        {formValues.selectedDate
-          ? formValues.selectedDate.toDateString()
-          : "Brak danych"}
-      </p>
-      <p>Sprzedałem pojazd: {formValues.sold ? "Tak" : "Nie"}</p>
-      <p>Kupiłem/sprowadziłem pojazd: {formValues.bought ? "Tak" : "Nie"}</p>
-      <p>Jestem osobą fizyczną: {formValues.isNaturalPerson ? "Tak" : "Nie"}</p>
-      <p>Jestem przedsiębiorcą: {formValues.isLegalPerson ? "Tak" : "Nie"}</p>
-      <p>Pokaż szczegółowe dane: {formValues.detailedData ? "Tak" : "Nie"}</p>
     </div>
   );
 }

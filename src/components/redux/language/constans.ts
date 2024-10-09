@@ -98,48 +98,58 @@ export const langDictionary = {
         [Languages.UA]: "Сьогодні",
     },
     
-    passwordField: {
-        [Languages.EN]: "Password",
-        [Languages.PL]: "Hasło",
+    //listOfDays
+    listOfDaysNextDay: {
+        [Languages.EN]: "Next day",
+        [Languages.PL]: "Kolejny dzień",
+        [Languages.UA]: "Ще день",
     },
-    confirmPasswordField: {
-        [Languages.EN]: "Confirm password",
-        [Languages.PL]: "Potwierdź hasło",
+    listOfDaysDate: {
+        [Languages.EN]: "Date",
+        [Languages.PL]: "Data",
+        [Languages.UA]: "Дата",
     },
-    privacyPolicy: {
-        [Languages.EN]: "Accepting ridiculously long terms and conditions that no one reads anyway, called Privacy Policies.",
-        [Languages.PL]: "Akceptowanie absurdalnie długich warunków, których i tak nikt nie czyta, zwanych Polityką Prywatności.",
+    listOfDaysDeadlineDay: {
+        [Languages.EN]: "Deadline day",
+        [Languages.PL]: "Dzień terminu",
+        [Languages.UA]: "день терміну",
     },
-    signUpButton: {
-        [Languages.EN]: "Sign up",
-        [Languages.PL]: "Zarejestruj się",
-    },
-    alreadyHaveAnAccountText: {
-        [Languages.EN]: "Already have an account?",
-        [Languages.PL]: "Masz już konto?",
-    },
-    loginNowText: {
-        [Languages.EN]: "Login now",
-        [Languages.PL]: "Zaloguj się teraz",
-    },
-    // RegisterForm errors
-    errorConnection400: {
-        [Languages.EN]: "Request failed with status code 400. It is possible that the email address has already been used.",
-        [Languages.PL]: "Żądanie nie powiodło się, kod statusu 400. Prawdopodobnie adres e-mail został już użyty.",
+    listOfDaysDescription: {
+        [Languages.EN]: "Description",
+        [Languages.PL]: "Opis",
+        [Languages.UA]: "Oпис",
     },
 
-    // LoginForm
-    loginFormTitle: {
-        [Languages.EN]: "Login form",
-        [Languages.PL]: "Formularz logowania",
+    //calculationNumberOfDays
+    calculationNumberOfDays_DateOfContract: {
+        [Languages.EN]: "date of contract",
+        [Languages.PL]: "data umowy",
+        [Languages.UA]: "дата договору",
     },
-    signInButton: {
-        [Languages.EN]: "Sign in",
-        [Languages.PL]: "Zaloguj się",
+    calculationNumberOfDays_ImportingVehicle: {
+        [Languages.EN]: "importing a vehicle",
+        [Languages.PL]: "sprowadzenia pojazdu",
+        [Languages.UA]: "привезення транспортного засобу",
     },
-    dontHaveAnAccountText: {
-        [Languages.EN]: "Don't have an account yet?",
-        [Languages.PL]: "Nie masz jeszcze konta?",
+    calculationNumberOfDays_DayOff: {
+        [Languages.EN]: "day off",
+        [Languages.PL]: "dzień wolny",
+        [Languages.UA]: "вихідний день",
+    },
+    calculationNumberOfDays_LastDeadline: {
+        [Languages.EN]: "final deadline",
+        [Languages.PL]: "ostatni termin",
+        [Languages.UA]: "останній термін",
+    },
+    calculationNumberOfDays_Penalty: {
+        [Languages.EN]: "penalty",
+        [Languages.PL]: "kara",
+        [Languages.UA]: "пенальті",
+    },
+    calculationNumberOfDays_DeadlineDay: {
+        [Languages.EN]: "deadline day",
+        [Languages.PL]: "dzień terminu",
+        [Languages.UA]: "день терміну",
     },
     registerNowText: {
         [Languages.EN]: "Register now",

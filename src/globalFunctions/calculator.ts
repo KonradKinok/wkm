@@ -1,5 +1,9 @@
+import { selectLanguage } from "../components/redux/language/selectorsLanguage";
+import { langDictionary } from "../components/redux/language/constans";
+
 import { FaRegCalendar } from "react-icons/fa";
-import { FaRegCalendarPlus } from "react-icons/fa";
+import { GiMoneyStack } from "react-icons/gi";
+import { useSelector } from "react-redux";
 
 interface CalculationNumberOfDays {
   selectedDate: Date;
@@ -8,9 +12,10 @@ interface CalculationNumberOfDays {
   isNaturalPerson: boolean;
   isLegalPerson: boolean;
   detailedData: boolean;
+  currentLanguage: "en" | "pl" | "ua";
 }
 export interface ListEntry {
-  nextDayOfTheDeadline: string; // Możesz dostosować typ w zależności od oczekiwanego formatu
+  nextDayOfTheDeadline: string | null; // Możesz dostosować typ w zależności od oczekiwanego formatu
   nextDay: string;
   nextData: string; // Możesz dostosować typ w zależności od oczekiwanego formatu
   nameDayOfWeek: string;
@@ -25,41 +30,46 @@ export function calculationNumberOfDays(
   isNaturalPerson: boolean,
   isLegalPerson: boolean,
   detailedData: boolean,
+  currentLanguage: "en" | "pl" | "ua",
 ): { listOfDates: ListEntry[]; startDate: Date } | null {
   if (selectedDate) {
+    const dateOptions: Intl.DateTimeFormatOptions = {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    };
     const data_14_03_2020 = new Date(2020, 2, 14); // Miesiące są zero-indexowane w JavaScript
     const data_23_05_2020 = new Date(2020, 4, 23);
     let listOfDates: ListEntry[] = [];
-    let currentDay: Date = new Date(selectedDate);
     const startDate = new Date(selectedDate);
-    const firstPenaltyTerm = isNaturalPerson ? 30 : 90;
-    const secondPenaltyTerm = 180;
-    const formattedFirstPenaltyNaturalPersonRegistrationAmount =
-      new Intl.NumberFormat("pl-PL", {
-        style: "currency",
-        currency: "PLN",
-      }).format(500);
-    const formattedFirstPenaltyLegalPersonRegistrationAmount =
-      new Intl.NumberFormat("pl-PL", {
-        style: "currency",
-        currency: "PLN",
-      }).format(1000);
-    const formattedSecondPenaltyNaturalPersonRegistrationAmount =
-      new Intl.NumberFormat("pl-PL", {
-        style: "currency",
-        currency: "PLN",
-      }).format(1000);
-    const formattedSecondPenaltyLegalPersonRegistrationAmount =
-      new Intl.NumberFormat("pl-PL", {
-        style: "currency",
-        currency: "PLN",
-      }).format(2000);
+
+    //penalty term
+    let firstPenaltyTerm, secondPenaltyTerm;
+    if (sold) {
+      firstPenaltyTerm = 30;
+      secondPenaltyTerm = 30;
+    } else {
+      firstPenaltyTerm = isNaturalPerson ? 30 : 90;
+      secondPenaltyTerm = 180;
+    }
+    let secondPunishment = false;
+
+    const formattedFirstPenaltyNaturalPersonRegistrationAmount: string =
+      formatCurrency(500);
+    const formattedFirstPenaltyLegalPersonRegistrationAmount: string =
+      formatCurrency(1000);
+    const formattedSecondPenaltyNaturalPersonRegistrationAmount: string =
+      formatCurrency(1000);
+    const formattedSecondPenaltyLegalPersonRegistrationAmount: string =
+      formatCurrency(2000);
+
     const firstPenaltyRegistrationAmount = isNaturalPerson
       ? formattedFirstPenaltyNaturalPersonRegistrationAmount
       : formattedFirstPenaltyLegalPersonRegistrationAmount;
     const secondPenaltyRegistrationAmount = isNaturalPerson
       ? formattedSecondPenaltyNaturalPersonRegistrationAmount
       : formattedSecondPenaltyLegalPersonRegistrationAmount;
+
     const notificationOfSaleAmount = new Intl.NumberFormat("pl-PL", {
       style: "currency",
       currency: "PLN",
@@ -68,92 +78,133 @@ export function calculationNumberOfDays(
     let nextDay = 0;
     do {
       const newDate = new Date(startDate); // Kopiujemy datę początkową
-      newDate.setDate(startDate.getDate() + nextDayOfTheDeadline); // Dodajemy odpowiednią liczbę dni
+      newDate.setDate(startDate.getDate() + nextDay); // Dodajemy odpowiednią liczbę dni
 
       const currentDay = new Date(newDate); // Tworzymy nowy obiekt daty (skopiowany)
       const dayOfWeekNumber = currentDay.getDay();
       // const dayOfWeekString = daysOfTheWeek[dayOfWeekNumber];
+      const currentDayString = currentDay.toLocaleDateString(
+        "pl-PL",
+        dateOptions,
+      );
       const dayOfWeekString = currentDay.toLocaleString("pl-PL", {
         weekday: "short",
       });
+
+      //date of an agreement
       if (nextDayOfTheDeadline == 0) {
-        const description = sold ? "data umowy" : "data umowy/sprowadzenia";
-
-        listOfDates.push({
-          nextDay: `${nextDay.toString().padStart(3, '0')}`,
-          nextDayOfTheDeadline: `${nextDayOfTheDeadline}`, // Numerowanie dni
-           nextData: currentDay.toLocaleDateString("pl-PL", {
-          day: "2-digit", 
-          month: "2-digit", 
-          year: "numeric", 
-        }),
-          nameDayOfWeek: dayOfWeekString,
-          description: `${description}`,
-          iconName: FaRegCalendar,
-          iconClass: "icon-FaRegCalendar",
-        });
-        nextDayOfTheDeadline++;
-        nextDay++;
-        continue;
-      }
-      if (nextDayOfTheDeadline == 30) {
-        const description = "ostatni termin";
-
-        listOfDates.push({
-          nextDay: `${nextDay.toString().padStart(3, '0')}`,
-          nextDayOfTheDeadline: `${nextDayOfTheDeadline}`, // Numerowanie dni
-           nextData: currentDay.toLocaleDateString("pl-PL", {
-          day: "2-digit", 
-          month: "2-digit", 
-          year: "numeric", 
-        }),
-          nameDayOfWeek: dayOfWeekString,
-          description: `${description}`,
-          iconName: FaRegCalendar,
-          iconClass: "",
-        });
-        nextDayOfTheDeadline++;
-        nextDay++;
-        continue;
-      }
-      if (nextDayOfTheDeadline == 31) {
         const description = sold
-          ? `Kwota kary: ${notificationOfSaleAmount}`
-          : `Kwota I kary: ${firstPenaltyRegistrationAmount}`;
+          ? langDictionary.calculationNumberOfDays_DateOfContract[currentLanguage]
+          : `${langDictionary.calculationNumberOfDays_DateOfContract[currentLanguage]} / 
+          ${langDictionary.calculationNumberOfDays_ImportingVehicle[currentLanguage]}`;
 
         listOfDates.push({
-          nextDay: `${nextDay.toString().padStart(3, '0')}`,
-          nextDayOfTheDeadline: `${nextDayOfTheDeadline}`, // Numerowanie dni
-           nextData: currentDay.toLocaleDateString("pl-PL", {
-          day: "2-digit", // Dwucyfrowy dzień
-          month: "2-digit", // Dwucyfrowy miesiąc
-          year: "numeric", // Pełny rok
-        }), // Formatowanie daty
+          nextDay: `${nextDay.toString().padStart(3, "0")}`,
+          nextDayOfTheDeadline: `${nextDayOfTheDeadline.toString().padStart(3, "0")}`, // Numerowanie dni
+          nextData: currentDayString,
           nameDayOfWeek: dayOfWeekString,
           description: `${description}`,
-          iconName: FaRegCalendarPlus,
-          iconClass: "icon-FaRegCalendarPlus",
+          iconName: FaRegCalendar,
+          iconClass: "icon-day-of-agreement",
         });
         nextDayOfTheDeadline++;
         nextDay++;
         continue;
+      }
+      if (nextDayOfTheDeadline == firstPenaltyTerm) {
+        if (isHoliday(currentDay)) {
+          const description = langDictionary.calculationNumberOfDays_DayOff[currentLanguage];
+          listOfDates.push({
+            nextDay: `${nextDay.toString().padStart(3, "0")}`,
+            nextDayOfTheDeadline: `---`, // Numerowanie dni
+            nextData: currentDayString,
+            nameDayOfWeek: dayOfWeekString,
+            description: `${description}`,
+            iconName: FaRegCalendar,
+            iconClass: "",
+          });
+          nextDay++;
+          continue;
+        }
+        const description = langDictionary.calculationNumberOfDays_LastDeadline[currentLanguage];
+        listOfDates.push({
+          nextDay: `${nextDay.toString().padStart(3, "0")}`,
+          nextDayOfTheDeadline: `${nextDayOfTheDeadline.toString().padStart(3, "0")}`, // Numerowanie dni
+          nextData: currentDay.toLocaleDateString("pl-PL", dateOptions),
+          nameDayOfWeek: dayOfWeekString,
+          description: `${description}`,
+          iconName: FaRegCalendar,
+          iconClass: "icon-day-before-punish",
+        });
+        nextDayOfTheDeadline++;
+        nextDay++;
+        continue;
+      }
+      if (nextDayOfTheDeadline == firstPenaltyTerm + 1) {
+        let description = "";
+        console.log("secondPunishment", secondPunishment);
+        if (secondPunishment) {
+          description = sold
+            ? `${langDictionary.calculationNumberOfDays_Penalty[currentLanguage]}: ${notificationOfSaleAmount}`
+            : `II ${langDictionary.calculationNumberOfDays_Penalty[currentLanguage]}: ${secondPenaltyRegistrationAmount}`;
+        } else {
+          description = sold
+            ? `${langDictionary.calculationNumberOfDays_Penalty[currentLanguage]}: ${notificationOfSaleAmount}`
+            : `I ${langDictionary.calculationNumberOfDays_Penalty[currentLanguage]}: ${firstPenaltyRegistrationAmount}`;
+        }
+
+        listOfDates.push({
+          nextDay: `${nextDay.toString().padStart(3, "0")}`,
+          nextDayOfTheDeadline: null, // Numerowanie dni
+          nextData: currentDay.toLocaleDateString("pl-PL", dateOptions), // Formatowanie daty
+          nameDayOfWeek: dayOfWeekString,
+          description: `${description}`,
+          iconName: GiMoneyStack,
+          iconClass: "icon-day-of-punish",
+        });
+
+        nextDay++;
+        nextDayOfTheDeadline = nextDay;
+        if (firstPenaltyTerm < secondPenaltyTerm) {
+          firstPenaltyTerm = secondPenaltyTerm;
+          secondPunishment = true;
+        }
+
+        continue;
+      }
+
+      let description = "";
+      // if (secondPunishment) {
+      //   description = sold
+      //     ? `${"dzień terminu"}`
+      //     : `${"dzień terminu II"}`;
+      // } else {
+      //   description = sold
+      //     ? `${"dzień terminu"}`
+      //     : `${"dzień terminu I"}`;
+      // }
+      if (secondPunishment) {
+        description = sold
+          ? langDictionary.calculationNumberOfDays_DeadlineDay[currentLanguage]
+          : `${langDictionary.calculationNumberOfDays_DeadlineDay[currentLanguage]} II`;
+      } else {
+        description = sold
+          ? langDictionary.calculationNumberOfDays_DeadlineDay[currentLanguage]
+          : `${langDictionary.calculationNumberOfDays_DeadlineDay[currentLanguage]} I`;
       }
       listOfDates.push({
-        nextDay: `${nextDay.toString().padStart(3, '0')}`,
-        nextDayOfTheDeadline: `${nextDayOfTheDeadline}`, // Numerowanie dni
-        nextData: currentDay.toLocaleDateString("pl-PL", {
-          day: "2-digit", // Dwucyfrowy dzień
-          month: "2-digit", // Dwucyfrowy miesiąc
-          year: "numeric", // Pełny rok
-        }),
+        nextDay: `${nextDay.toString().padStart(3, "0")}`,
+        nextDayOfTheDeadline: `${nextDayOfTheDeadline.toString().padStart(3, "0")}`, // Numerowanie dni
+        nextData: currentDay.toLocaleDateString("pl-PL", dateOptions),
         nameDayOfWeek: dayOfWeekString,
-        description: `${nextDayOfTheDeadline} dzień terminu`,
+        description: `${nextDayOfTheDeadline.toString().padStart(2, "0")} ${description}`,
         iconName: FaRegCalendar,
         iconClass: "",
       });
       nextDayOfTheDeadline++;
       nextDay++;
-    } while (nextDayOfTheDeadline < 35);
+    } while (nextDayOfTheDeadline < secondPenaltyTerm + 2);
+
     return { listOfDates, startDate }; // Zwracamy obiekt z listą dat i datą początkową
   }
 
@@ -302,4 +353,11 @@ function isHoliday(dayOff) {
   if (dayOff.toDateString() === corpusChristi.toDateString()) return true; // Boże Ciało
 
   return false; // Nie jest dniem wolnym
+}
+
+function formatCurrency(amount: number): string {
+  return new Intl.NumberFormat("pl-PL", {
+    style: "currency",
+    currency: "PLN",
+  }).format(amount);
 }

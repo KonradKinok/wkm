@@ -92,8 +92,11 @@ export function getRandomColorRgba(): string {
  * @returns {string}
  */
 export const capitalizeFirstLetter = (str: string): string => {
-  if (!str) return str;
-  return str.charAt(0).toUpperCase() + str.slice(1);
+  return str ? str.charAt(0).toUpperCase() + str.slice(1) : str;
+};
+
+export const toLowerCaseFirstLetter = (str: string): string => {
+  return str ? str.charAt(0).toLowerCase() + str.slice(1) : str;
 };
 
 //formatDate
@@ -115,3 +118,10 @@ export function formatDateAndHour(dateStr: string):string {
   const seconds = String(date.getSeconds()).padStart(2, '0');
   return `${day}.${month}.${year}y. ${hour}:${minutes}:${seconds}`;
 };
+
+
+function addDays(date: Date, days: number): Date {
+  var result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+}
