@@ -27,6 +27,15 @@
     align-items: center;
 }
 
+.footer-address a {
+    color: var(--footer-address-color);
+    transition: color .75s cubic-bezier(.4, 0, .2, 1);
+}
+
+.footer-address a:hover {
+    color: var(--footer-address-color-hover);
+}
+
 .footer-libraries {
     display: flex;
     flex-flow: column nowrap;
@@ -41,18 +50,8 @@
     cursor: pointer;
 }
 
-.footer-container-libraries-date {
+.footer-container-libraries {
     display: flex;
     flex-flow: row;
     gap: 10px;
-}
-
-.footer-date {
-    align-self: flex-end;
-    color: var(--footer-text-color);
-    text-shadow: none;
-}
-
-.footer-hidden {
-    display: none;
 }

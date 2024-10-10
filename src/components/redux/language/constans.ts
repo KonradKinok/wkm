@@ -151,99 +151,21 @@ export const langDictionary = {
         [Languages.PL]: "dzień terminu",
         [Languages.UA]: "день терміну",
     },
-    registerNowText: {
-        [Languages.EN]: "Register now",
-        [Languages.PL]: "Zarejestruj się teraz",
-    },
-    // LoginForm errors
-    loginFormErrorConnection400: {
-        [Languages.EN]: "Request failed with status code 400. Email address or password is invalid.",
-        [Languages.PL]: "Żądanie nie powiodło się, kod statusu 400. Adres e-mail lub hasło są nieprawidłowe.",
-    },
-
-    // Filter Contacts
-    findContact: {
-        [Languages.EN]: "Search contact",
-        [Languages.PL]: "Wyszukaj kontakt"
-    },
-
-    //ContactForm
-    errorPhoneNumberRegex: {
-        [Languages.EN]: `The sign "{value}" is not allowed. Only numbers can be entered.`,
-        [Languages.PL]: `Znak "{value}"nie jest dozwolony. Można wpisywać tylko cyfry.`
-    },
-    errorRepeatedContact: {
-        [Languages.EN]: "{name} or {number} is already in contacts",
-        [Languages.PL]: "{name} lub {number} już istnieje w kontaktach"
-    },
-    newName: {
-        [Languages.EN]: "New name",
-        [Languages.PL]: "Nowa nazwa"
-    },
-    newNumber: {
-        [Languages.EN]: "New number",
-        [Languages.PL]: "Nowy numer"
-    },
-    // ContactForm addContact
-    tableButtonAddContact: {
-        [Languages.EN]: "Add",
-        [Languages.PL]: "Dodaj"
-    },
-    //Table
-    tableId: {
-        [Languages.EN]: "Id",
-        [Languages.PL]: "Lp",
-    },
-    tableName: {
-        [Languages.EN]: "Name",
-        [Languages.PL]: "Nazwa"
-    },
-    tableNumber: {
-        [Languages.EN]: "Number",
-        [Languages.PL]: "Numer"
-    },
-    tableAction: {
-        [Languages.EN]: "Actions",
-        [Languages.PL]: "Akcje"
-    },
-    tableButtonSave: {
-        [Languages.EN]: "Save",
-        [Languages.PL]: "Zapisz"
-    },
-    tableButtonCancel: {
-        [Languages.EN]: "Cancel",
-        [Languages.PL]: "Anuluj"
-    },
-    tableButtonEdit: {
-        [Languages.EN]: "Edit",
-        [Languages.PL]: "Edytuj"
-    },
-    tableButtonDelete: {
-        [Languages.EN]: "Delete",
-        [Languages.PL]: "Usuń"
-    },
 
     // Footer
     footerLibraries: {
         [Languages.EN]: "Libraries",
-        [Languages.PL]: "Biblioteki"
+        [Languages.PL]: "Biblioteki",
+        [Languages.UA]: "Бібліотеки",
     },
 
     // Modal Libraries
     modalLibraries: {
         [Languages.EN]: "Used libraries:",
-        [Languages.PL]: "Użyte biblioteki:"
-    },
-    //HomePage
-    homePageSecondPhrase: {
-        [Languages.EN]: "Tired of the mess?<br /> Store your contacts securely in the Phonebook.",
-        [Languages.PL]: "Masz dość bałaganu?<br /> Przechowuj swoje kontakty bezpiecznie w Phonebook'u."
+        [Languages.PL]: "Użyte biblioteki:",
+        [Languages.UA]: "Використані бібліотеки",
     },
     
-    homePageFirstPhrase: {
-        [Languages.EN]: "Trade paper notes for digital ease.<br /> The Phonebook keeps things organized on any device!",
-        [Languages.PL]: "Zamień papierowe notatki na cyfrową wygodę.<br /> Phonebook to porządek na każdym urządzeniu!"
-    },
     
 
 }

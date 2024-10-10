@@ -34,24 +34,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
 }) => {
   const currentLanguage = useSelector(selectLanguage);
   const [calendarLanguage, setCalendarLanguage] = useState(pl);
-  // let calendarLanguage;
 
-  const handleCalendarClose = () => {
-    console.log("Calendar closed");
-  };
-  const handleCalendarOpen = () => console.log("Calendar opened");
-
-  // useEffect(() => {
-  //   console.log("currentLanguage:", currentLanguage);
-  //   if (currentLanguage == Languages.PL) {
-  //     calendarLanguage = pl;
-  //   } else if (currentLanguage == Languages.EN) {
-  //     calendarLanguage = enGB;
-  //   } else if (currentLanguage == Languages.UA) {
-  //     calendarLanguage = uk;
-  //   }
-  //   console.log("currentLanguage:", currentLanguage);
-  // }, [currentLanguage]);
   useEffect(() => {
     if (currentLanguage === Languages.PL) {
       setCalendarLanguage(pl);
@@ -87,8 +70,8 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
       toggleCalendarOnIconClick
       selected={dateTimePickerDate}
       onChange={(date) => setDateTimePickerDate(date)}
-      openToDate={new Date(`${new Date().getFullYear()}/01/01`)}
-      minDate={new Date("2020/01/01")}
+      openToDate={new Date()}
+      minDate={new Date("2024/01/01")}
       todayButton={langDictionary.dateTimePickerButtonToday[currentLanguage]}
       name="dateTimePicker"
       locale={calendarLanguage}
@@ -116,7 +99,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
       // calendarContainer={MyContainer}
       readonly="readonly"
       // onCalendarClose={handleCalendarClose}
-      onCalendarOpen={handleCalendarOpen}>
+    >
       {/* <div style={{ color: "red" }}>Don't forget to check the weather!</div> */}
     </DatePicker>
   );
