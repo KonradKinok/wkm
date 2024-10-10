@@ -6,36 +6,32 @@ import { link } from "fs";
 import { selectLanguage } from "../redux/language/selectorsLanguage";
 import { langDictionary } from "../redux/language/constans";
 import { useSelector } from "react-redux";
-
-interface FormValues {
-  selectedDate: Date | null;
-  sold: boolean;
-  bought: boolean;
-  isNaturalPerson: boolean;
-  isLegalPerson: boolean;
-  detailedData: boolean;
-}
+import { FormValues } from "../../pages/PenaltiesPage/PenaltiesPage";
 
 export interface FormPenaltiesProps {
   setCalculatedData: (data: any) => void; // Zdefiniuj typ dla setCalculatedData
+  formValues: FormValues;
+  setFormValues: React.Dispatch<React.SetStateAction<FormValues>>;
 }
 
 export default function FormPenalties({
   setCalculatedData,
+  formValues,
+  setFormValues,
 }: FormPenaltiesProps) {
   const currentLanguage = useSelector(selectLanguage);
   const [dateTimePickerDate, setDateTimePickerDate] = useState<Date | null>(
     new Date(),
   );
 
-  const [formValues, setFormValues] = useState<FormValues>({
-    selectedDate: null, // Zmieniamy typ na Date | null
-    sold: true,
-    bought: false,
-    isNaturalPerson: true,
-    isLegalPerson: false,
-    detailedData: false,
-  });
+  // const [formValues, setFormValues] = useState<FormValues>({
+  //   selectedDate: null, // Zmieniamy typ na Date | null
+  //   sold: true,
+  //   bought: false,
+  //   isNaturalPerson: true,
+  //   isLegalPerson: false,
+  //   detailedData: false,
+  // });
 
   useEffect(() => {
     setFormValues((prevData) => ({
@@ -121,7 +117,9 @@ export default function FormPenalties({
         detailedData: checked, // Aktualizowanie wartości checkboxa
       }));
     }
-    setCalculatedData(null);
+    if (name !== "detailed-data") {
+      setCalculatedData(null);
+    }
   };
 
   return (

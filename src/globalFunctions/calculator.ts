@@ -174,15 +174,6 @@ export function calculationNumberOfDays(
       }
 
       let description = "";
-      // if (secondPunishment) {
-      //   description = sold
-      //     ? `${"dzień terminu"}`
-      //     : `${"dzień terminu II"}`;
-      // } else {
-      //   description = sold
-      //     ? `${"dzień terminu"}`
-      //     : `${"dzień terminu I"}`;
-      // }
       if (secondPunishment) {
         description = sold
           ? langDictionary.calculationNumberOfDays_DeadlineDay[currentLanguage]
@@ -204,7 +195,7 @@ export function calculationNumberOfDays(
       nextDayOfTheDeadline++;
       nextDay++;
     } while (nextDayOfTheDeadline < secondPenaltyTerm + 2);
-
+console.log("listOfDates",listOfDates)
     return { listOfDates, startDate }; // Zwracamy obiekt z listą dat i datą początkową
   }
 
