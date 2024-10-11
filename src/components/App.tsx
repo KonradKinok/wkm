@@ -7,13 +7,16 @@ const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const PenaltiesPage = lazy(
   () => import("../pages/PenaltiesPage/PenaltiesPage"),
 );
-
+const LegalRegulations = lazy(
+  () => import("../pages/LegalRegulations/LegalRegulations"),
+);
 const App: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<LayoutPage />}>
         <Route index element={<HomePage />} />
-        <Route path="penalties" element={<PenaltiesPage />}></Route>
+        <Route path="penalties" element={<PenaltiesPage />} />
+        <Route path="legalregulations" element={<LegalRegulations />} />
       </Route>
       <Route path="*" element={<HomePage />} />
     </Routes>

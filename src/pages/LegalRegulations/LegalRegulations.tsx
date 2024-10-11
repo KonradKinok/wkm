@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { DateTimePicker } from "../../components/DateTimePicker/DateTimePicker";
-import scss from "./PenaltiesPage.module.scss";
+import scss from "./LegalRegulations.module.scss";
 import * as calculator from "../../globalFunctions/calculator";
 import FormPenalties from "../../components/FormPenalties/FormPenalties";
 import ListOfDays from "../../components/ListOfDates/ListOfDays";
@@ -19,27 +19,10 @@ export interface FormValues {
   detailedData: boolean;
 }
 
-export default function PenaltiesPage() {
-  const [calculatedData, setCalculatedData] = useState(null);
-  const [formValues, setFormValues] = useState<FormValues>({
-    selectedDate: null, // Zmieniamy typ na Date | null
-    sold: true,
-    bought: false,
-    isNaturalPerson: true,
-    isLegalPerson: false,
-    detailedData: false,
-  });
+export default function LegalRegulations() {
   return (
-    <div className={scss["container-penalties-page"]}>
-      <FormPenalties
-        setCalculatedData={setCalculatedData}
-        formValues={formValues}
-        setFormValues={setFormValues}
-      />
-      {calculatedData && (
-        <ListOfDays calculatedData={calculatedData} formValues={formValues} />
-      )}
-      <ButtonUp />
+    <div className={scss["container-legalregulations-page"]}>
+      <h1>Legalregulations</h1>
     </div>
   );
 }

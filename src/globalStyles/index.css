@@ -62,7 +62,9 @@
        
     
     
-            
+    /* button-up */
+    --button-up-first-gradient: rgb(75, 0, 130);
+    --button-up-second-gradient:rgb(153, 50, 204);
     /* footer */
     --footer-background: rgb(75, 0, 130); /*Indygo */
     --footer-text-color: rgb(224, 255, 255);/*LightCyan */
