@@ -6,7 +6,6 @@ export const ButtonUp: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleScroll = () => {
-    // Sprawdza, czy scroll przekroczył 20px
     if (window.scrollY > 600) {
       setIsVisible(true);
     } else {
@@ -15,13 +14,12 @@ export const ButtonUp: React.FC = () => {
   };
 
   const handleOnClick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" }); // Gładki scroll na górę strony
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup event listener when component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -30,11 +28,10 @@ export const ButtonUp: React.FC = () => {
   return (
     <button
       name="upButton"
-      className={`${scss["up-button"]} ${isVisible ? scss["visible"] : ""}`} // Dodaje klasę visible, gdy przycisk ma się wyświetlać
+      className={`${scss["up-button"]} ${isVisible ? scss["visible"] : ""}`}
       type="button"
       onClick={handleOnClick}
-      style={{ display: isVisible ? "block" : "none" }} // Przycisk jest widoczny tylko, gdy isVisible jest true
-    >
+      style={{ display: isVisible ? "block" : "none" }}>
       <FaAngleDoubleUp />
     </button>
   );

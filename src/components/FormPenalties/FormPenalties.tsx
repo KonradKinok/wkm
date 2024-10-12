@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { DateTimePicker } from "../../components/DateTimePicker/DateTimePicker";
 import scss from "./FormPenalties.module.scss";
 import * as calculator from "../../globalFunctions/calculator";
@@ -79,6 +79,7 @@ export default function FormPenalties({
       calculatedDataFunction?.startDate,
     );
     setCalculatedData(calculatedDataFunction);
+    window.scrollBy(0, 300);
   };
   useEffect(() => {
     setCalculatedData(null);
@@ -116,6 +117,7 @@ export default function FormPenalties({
         ...prevData,
         detailedData: checked, // Aktualizowanie wartości checkboxa
       }));
+      window.scrollBy(0, 120);
     }
     if (name !== "detailed-data") {
       setCalculatedData(null);

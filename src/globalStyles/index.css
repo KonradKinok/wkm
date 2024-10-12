@@ -19,8 +19,8 @@
     --header-text-active-background: rgb(224, 255, 255);/*LightCyan */
         
     /* title */
-    --title-color-gradient1: rgb(240, 242, 240);
-    --title-color-gradient2: rgb(0, 12, 64);
+    --title-color-gradient1: rgb(224, 195, 252);
+    --title-color-gradient2: rgb(142, 197, 252);
     /* combobox */
     --combobox-text-color: rgb(75, 0, 130);/*Indygo */
     --combobox-text-hover-color: rgb(224, 255, 255);/*LightCyan */
@@ -72,12 +72,13 @@
     --footer-address-color: rgb(86, 194, 227);
     --footer-address-color-hover: rgb(106, 214, 247);
     /* mobile-menu */
-    --mobile-menu-open-icon-color: rgb(0, 0, 255);
-    --mobile-menu-open-icon-color-hover: rgb(0, 0, 205);
-    --mobile-menu-background: rgb(135, 206, 250);
-    --mobile-menu-color: rgb(0, 0, 139);
-    --mobile-menu-close-icon-color: rgb(0, 0, 255);
-    --mobile-menu-close-icon-color-hover: rgba(0, 0, 205, 0.5);
+    --mobile-menu-open-icon-color: rgb(224, 255, 255);
+    --mobile-menu-open-icon-color-hover: rgb(175, 238, 238);
+    --mobile-menu-background-gradient1: rgb(224, 195, 252);
+    --mobile-menu-background-gradient2: rgb(142, 197, 252);
+    --mobile-menu-color: rgb(75, 0, 130);;
+    --mobile-menu-close-icon-color: rgb(75, 0, 130);
+    --mobile-menu-close-icon-color-hover: rgb(153, 50, 204);
     /* modal-libraries */
     --modal-libraries-background: rgba(0, 0, 0, 0.8);
     --modal-libraries-link-text-color: rgb(135, 206, 235);

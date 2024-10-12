@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { DateTimePicker } from "../../components/DateTimePicker/DateTimePicker";
 import scss from "./PenaltiesPage.module.scss";
 import * as calculator from "../../globalFunctions/calculator";
@@ -20,6 +20,7 @@ export interface FormValues {
 }
 
 export default function PenaltiesPage() {
+  const ulRef = useRef<HTMLUListElement | null>(null);
   const [calculatedData, setCalculatedData] = useState(null);
   const [formValues, setFormValues] = useState<FormValues>({
     selectedDate: null, // Zmieniamy typ na Date | null

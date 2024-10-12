@@ -29,6 +29,13 @@ export const Navigation: React.FC<NavigationProps> = ({ onLinkClick }) => {
         onClick={onLinkClick}>
         {langDictionary.navPenalties[currentLanguage]}
       </NavLink>
+
+      <NavLink
+        to="legalregulations"
+        className={({ isActive }) => (isActive ? scss.active : "")}
+        onClick={onLinkClick}>
+        {langDictionary.navLegalRegulations[currentLanguage]}
+      </NavLink>
     </nav>
   );
 };

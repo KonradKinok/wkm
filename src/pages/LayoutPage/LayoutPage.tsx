@@ -3,6 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import Select, { SingleValue } from "react-select";
 import { Navigation } from "../../components/Navigation/Navigation";
+import { MobileMenu } from "../../components/MobileMenu/MobileMenu";
 import scss from "./LayoutPage.module.scss";
 import { Footer } from "../../components/Footer/Footer";
 import { selectLanguage } from "../../components/redux/language/selectorsLanguage";
@@ -18,6 +19,7 @@ import {
 } from "./dataForCombobox.languages";
 import { LanguageValue } from "../../components/redux/language/sliceLanguage";
 import * as globalFunctions from "../../globalFunctions/functions";
+import { Loader } from "../../components/Loader/Loader";
 interface LanguageLocalStorage {
   currentLanguage: string;
 }
@@ -85,6 +87,8 @@ export const LayoutPage: React.FC = () => {
     }
   }, [windowSize, dispatch]);
 
+  const isMobile: boolean = currentScreen !== screen.desktop;
+
   return (
     <div className={scss["main-container"]}>
       <header className={scss["header"]}>
@@ -105,10 +109,10 @@ export const LayoutPage: React.FC = () => {
             />
           </div>
         </div>
-        <Navigation />
+        {isMobile ? <MobileMenu /> : <Navigation />}
       </header>
       <main className={scss["main"]}>
-        <Suspense fallback={<div>Loading page...</div>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </main>

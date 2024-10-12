@@ -29,21 +29,16 @@
 .application-title {
     max-width: fit-content;
     text-transform: uppercase;
-
     font-size: 40px;
     font-weight: 900;
-    background-image: linear-gradient(to right, var(--title-color-gradient1), var(--title-color-gradient2));
     background-clip: text;
     color: transparent;
     transition: background-image 0.5s ease-in-out;
-    background-color: #8EC5FC;
-    background-image: linear-gradient(62deg, #E0C3FC 0%, #8EC5FC 100%, );
+    background-image: linear-gradient(62deg, var(--title-color-gradient1) 0%, var(--title-color-gradient2) 100%);
 }
 
 .application-title:hover {
-    background-image: linear-gradient(to left, var(--title-color-gradient1), var(--title-color-gradient2));
-    background-color: #8EC5FC;
-    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    background-image: linear-gradient(62deg, var(--title-color-gradient2) 0%, var(--title-color-gradient1) 100%);
 }
 
 // ComboBox
@@ -51,6 +46,15 @@
     display: inline-flex;
     cursor: pointer;
     // color: var(--combobox-text-color);
+}
+
+@media print {
+
+    /* Ukrywamy wszystkie elementy poza ListOfDays */
+    .header {
+        display: none;
+        /* Ukrywa wszystkie elementy */
+    }
 }
 
 /* Mobile (do 480px) */
@@ -67,5 +71,3 @@
 @media (min-width: 769px) {
     /* Stylowanie dla dużych ekranów */
 }
-
-// Mobile: 320px - 480px Tablet: 600px - 768px Desktop: 1024px - 1440px+

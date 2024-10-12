@@ -65,3 +65,34 @@
         }
     }
 }
+
+@media print {
+
+    /* Ukrywamy wszystkie elementy poza ListOfDays */
+
+
+    .container-list-of-days {
+        display: block;
+        /* Wyświetla tylko ListOfDays */
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    /* Stopka z tekstem "wkm.app.com" */
+    @page {
+        margin: 1cm;
+    }
+
+    body::after {
+        content: "wkm.app.com";
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 12px;
+        color: #555;
+    }
+}

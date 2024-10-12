@@ -1,0 +1,72 @@
+.container-legalregulations-page {
+    display: flex;
+    flex-flow: column wrap;
+    padding: 10px 10px;
+    width: 100%;
+    background-color: var(--main-background);
+    // background-image: linear-gradient(180deg, var(--main-background) 0%, var(--header-background) 50%, var(--main-background) 100%);
+    color: var(--main-color);
+    font-weight: 700;
+    font-size: small;
+    overflow: hidden;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    .legalregulations-section-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .legalregulations-span-paragraph {
+        font-size: xx-large;
+    }
+
+    .legalregulations-list {
+        text-align: start;
+        padding-bottom: 20px;
+
+        li {
+            padding-bottom: 10px;
+        }
+
+        //1) 2)
+        .legalregulations-list-number {
+
+            counter-reset: custom-counter;
+
+            li {
+                counter-increment: custom-counter;
+                padding-bottom: 0;
+            }
+
+            li::before {
+                content: counter(custom-counter) ") ";
+            }
+
+            //a) b)
+            .legalregulations-list-letter {
+
+                counter-reset: custom-alpha-counter;
+
+                li {
+                    counter-increment: custom-alpha-counter;
+                    padding-bottom: 0;
+                }
+
+                li::before {
+                    content: counter(custom-alpha-counter, lower-alpha) ") ";
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 769px) {
+    .container-legalregulations-page {
+        font-size: large;
+    }
+}

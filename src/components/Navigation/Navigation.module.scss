@@ -1,5 +1,6 @@
 .nav-navigation {
     display: flex;
+    flex-flow: column wrap;
     font-weight: 800;
     font-size: 1.5rem;
     margin-right: 20px;
@@ -26,5 +27,12 @@
 
     .lang {
         text-transform: uppercase;
+    }
+}
+
+
+@media (min-width: 769px) {
+    .nav-navigation {
+        flex-flow: row wrap;
     }
 }

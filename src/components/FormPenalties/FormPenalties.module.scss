@@ -118,3 +118,13 @@
         cursor: not-allowed;
     }
 }
+
+
+@media print {
+
+    /* Ukrywamy wszystkie elementy poza ListOfDays */
+    .container-form {
+        display: none;
+        /* Ukrywa wszystkie elementy */
+    }
+}

@@ -20,7 +20,7 @@ export const MobileMenu: React.FC = () => {
         className={scss["mobile-menu-open"]}
         type="button"
         onClick={handleMenuMobileModalOpen}>
-        <MdMenu className={scss["mobile-menu-open-icon"]} size={50} />
+        <MdMenu className={scss["mobile-menu-open-icon"]} />
       </button>
 
       <div
