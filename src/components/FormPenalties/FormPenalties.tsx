@@ -63,6 +63,7 @@ export default function FormPenalties({
       behavior: "smooth", // Ustawienie płynnego przewijania
     });
   };
+
   useEffect(() => {
     setCalculatedData(null);
   }, [currentLanguage]);
