@@ -1,16 +1,15 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { Toaster } from "react-hot-toast";
 import Select, { SingleValue } from "react-select";
 import { Navigation } from "../../components/Navigation/Navigation";
 import { MobileMenu } from "../../components/MobileMenu/MobileMenu";
-import scss from "./LayoutPage.module.scss";
 import { Footer } from "../../components/Footer/Footer";
-import { selectLanguage } from "../../components/redux/language/selectorsLanguage";
 import { selectWindowDimensions } from "../../components/redux/windowDimensions/selectorsWindowDimensions";
+import { setWindowDimension } from "../../components/redux/windowDimensions/sliceWindowDimensions";
+import { selectLanguage } from "../../components/redux/language/selectorsLanguage";
 import { langDictionary } from "../../components/redux/language/constans";
-import { useDispatch, useSelector } from "react-redux";
-import { setWindowDimension } from "../../components/redux/windowDimensions/sliceWindowDimensions"; // Import właściwej akcji z Reduxa
 import { setLanguage } from "../../components/redux/language/sliceLanguage";
 import {
   customStyles,
@@ -20,6 +19,7 @@ import {
 import { LanguageValue } from "../../components/redux/language/sliceLanguage";
 import * as globalFunctions from "../../globalFunctions/functions";
 import { Loader } from "../../components/Loader/Loader";
+import scss from "./LayoutPage.module.scss";
 interface LanguageLocalStorage {
   currentLanguage: string;
 }
@@ -47,6 +47,7 @@ export const LayoutPage: React.FC = () => {
 
     return languageOptions.find((option) => option.value === currentLanguage);
   };
+
   const currentScreen = useSelector(selectWindowDimensions);
   const [windowSize, setWindowSize] = useState<number | null>(null); // Zmieniono nazwę na windowSize
   const dispatch = useDispatch();

@@ -1,23 +1,21 @@
 import React, { forwardRef, useEffect, useState } from "react";
 import DatePicker, { CalendarContainer } from "react-datepicker";
-import { getYear, getMonth } from "date-fns";
 import { pl } from "date-fns/locale/pl";
 import { enGB } from "date-fns/locale/en-GB";
 import { uk } from "date-fns/locale/uk";
 import "react-datepicker/dist/react-datepicker.css";
-import scss from "./DateTimePicer.module.scss";
-import "./DateTimePicer.module.scss";
-import calendar from "../../images/dateTimePicker/calendar.svg";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { selectLanguage } from "../redux/language/selectorsLanguage";
 import { langDictionary } from "../redux/language/constans";
 import { Languages } from "../redux/language/constans";
 import { useSelector } from "react-redux";
-// Typowanie propsów dla MyContainer
+import scss from "./DateTimePicer.module.scss";
+
 interface MyContainerProps {
   className?: string;
   children: React.ReactNode;
 }
+
 interface DateTimePickerProps {
   dateTimePickerDate: Date | null;
   setDateTimePickerDate: React.Dispatch<React.SetStateAction<Date | null>>;
@@ -28,6 +26,7 @@ interface CustomInputProps {
   onClick?: () => void;
   className?: string;
 }
+
 export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   dateTimePickerDate,
   setDateTimePickerDate,
@@ -76,10 +75,8 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
       name="dateTimePicker"
       locale={calendarLanguage}
       icon={<FaRegCalendarAlt className={scss.icon} />}
-      // style
-      // className={scss.inputDateTimePicker}
       calendarClassName={scss["month-container"]} //months style
-      weekDayClassName={() => scss["week-day"]} // works
+      weekDayClassName={() => scss["week-day"]}
       dayClassName={(date) => {
         // Sprawdzenie, czy dany dzień jest wybrany
         const isSelected =

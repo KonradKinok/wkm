@@ -1,8 +1,7 @@
 import "./globalStyles/index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, HashRouter } from "react-router-dom";
-import { PersistGate } from "redux-persist/integration/react";
+import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./components/redux/store";
 import App from "./components/App";

@@ -3,12 +3,12 @@ import { useSelector } from "react-redux";
 import { langDictionary } from "../redux/language/constans";
 import { selectLanguage } from "../redux/language/selectorsLanguage";
 import scss from "./ModalLibraries.module.scss";
+
 interface ModalProps {
   closeModal: () => void;
   isModalLibrariesOpen: boolean;
 }
 
-// Komponent Modal w TypeScript
 export function ModalLibraries({
   closeModal,
   isModalLibrariesOpen,

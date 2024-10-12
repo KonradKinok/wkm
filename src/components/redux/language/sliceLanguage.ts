@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 export type LanguageValue = "pl" | "en" | "ua"; // Typ dla języków
+
 export interface LanguageState {
   language: LanguageValue; // Użyj zdefiniowanego typu
 }

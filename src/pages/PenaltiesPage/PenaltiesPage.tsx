@@ -20,16 +20,17 @@ export interface FormValues {
 }
 
 export default function PenaltiesPage() {
-  const ulRef = useRef<HTMLUListElement | null>(null);
+
   const [calculatedData, setCalculatedData] = useState(null);
   const [formValues, setFormValues] = useState<FormValues>({
-    selectedDate: null, // Zmieniamy typ na Date | null
+    selectedDate: null, 
     sold: true,
     bought: false,
     isNaturalPerson: true,
     isLegalPerson: false,
     detailedData: false,
   });
+  
   return (
     <div className={scss["container-penalties-page"]}>
       <FormPenalties

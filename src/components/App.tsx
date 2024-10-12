@@ -1,5 +1,4 @@
-import React, { useEffect, lazy, Suspense } from "react";
-import { useDispatch } from "react-redux";
+import React, { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { LayoutPage } from "../pages/LayoutPage/LayoutPage";
 
@@ -10,6 +9,7 @@ const PenaltiesPage = lazy(
 const LegalRegulationsPage = lazy(
   () => import("../pages/LegalRegulationsPage/LegalRegulationsPage"),
 );
+
 const App: React.FC = () => {
   return (
     <Routes>

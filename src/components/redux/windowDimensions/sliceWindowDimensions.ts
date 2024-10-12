@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { WindowDimensionState } from '../../Interface/Interface';
-
+interface WindowDimensionState {
+  status: string;
+}
 const initialState: WindowDimensionState = {
   status: "desktop", // domyślny stan
 };

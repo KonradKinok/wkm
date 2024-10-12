@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { languageReducer } from "./language/sliceLanguage";
 import { windowDimensionReducer } from "./windowDimensions/sliceWindowDimensions";
+
 const rootReducer = combineReducers({
   language: languageReducer,
   screen: windowDimensionReducer

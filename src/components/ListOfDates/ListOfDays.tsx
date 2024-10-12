@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
-import scss from "./ListOfDays.module.scss";
+import { useSelector } from "react-redux";
 import { selectLanguage } from "../redux/language/selectorsLanguage";
 import { langDictionary } from "../redux/language/constans";
 import { ListEntry } from "../../globalFunctions/calculator";
-import { useSelector } from "react-redux";
 import { FormValues } from "../../pages/PenaltiesPage/PenaltiesPage";
+import scss from "./ListOfDays.module.scss";
 
 interface CalculatedData {
   listOfDates: ListEntry[];
   startDate: string | Date;
 }
+
 interface ListOfDaysProps {
   calculatedData: CalculatedData | null;
   formValues: FormValues;
 }
+
 export default function ListOfDays({
   calculatedData,
   formValues,
@@ -26,7 +28,7 @@ export default function ListOfDays({
       setCurrentList(calculatedData?.listOfDates || []);
     } else {
       const filteredItems = calculatedData?.listOfDates.filter((item) => {
-        const description = item.description.toLowerCase(); // Konwertujemy na małe litery dla porównania
+        const description = item.description.toLowerCase(); // Konwersja na małe litery dla porównania
         return (
           description.includes(
             langDictionary.calculationNumberOfDays_DateOfContract[

@@ -1,4 +1,4 @@
 
-import { RootState } from '../../Interface/Interface';
+import { RootState } from '../store';
 
 export const selectLanguage = (state: RootState) => state.language.language;

@@ -24,13 +24,9 @@
         color: var(--header-text-active-color);
         background-color: var(--header-text-active-background);
     }
-
-    .lang {
-        text-transform: uppercase;
-    }
 }
 
-
+//media
 @media (min-width: 769px) {
     .nav-navigation {
         flex-flow: row wrap;

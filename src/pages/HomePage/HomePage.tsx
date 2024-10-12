@@ -1,11 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { selectLanguage } from "../../components/redux/language/selectorsLanguage";
 import { langDictionary } from "../../components/redux/language/constans";
-import scss from "./HomePage.module.scss";
 import obrazekPlacacyMezczyzna from "../../images/homePage/obrazekPlacacyMezczyzna.jpg";
 import samochodPlusTloJpg from "../../images/homePage/samochodPlusTlo.jpg";
-import { Link } from "react-router-dom";
+import scss from "./HomePage.module.scss";
+
 export default function HomePage() {
   const currentLanguage = useSelector(selectLanguage);
 

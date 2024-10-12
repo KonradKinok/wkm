@@ -1,19 +1,7 @@
-import { selectLanguage } from "../components/redux/language/selectorsLanguage";
 import { langDictionary } from "../components/redux/language/constans";
-
 import { FaRegCalendar } from "react-icons/fa";
 import { GiMoneyStack } from "react-icons/gi";
-import { useSelector } from "react-redux";
 
-interface CalculationNumberOfDays {
-  selectedDate: Date;
-  sold: boolean;
-  bought: boolean;
-  isNaturalPerson: boolean;
-  isLegalPerson: boolean;
-  detailedData: boolean;
-  currentLanguage: "en" | "pl" | "ua";
-}
 export interface ListEntry {
   nextDayOfTheDeadline: string | null; // Możesz dostosować typ w zależności od oczekiwanego formatu
   nextDay: string;
@@ -23,6 +11,7 @@ export interface ListEntry {
   iconName: React.ElementType;
   iconClass: string;
 }
+
 export function calculationNumberOfDays(
   selectedDate: Date | null,
   sold: boolean,
@@ -32,6 +21,7 @@ export function calculationNumberOfDays(
   detailedData: boolean,
   currentLanguage: "en" | "pl" | "ua",
 ): { listOfDates: ListEntry[]; startDate: Date } | null {
+
   if (selectedDate) {
     const dateOptions: Intl.DateTimeFormatOptions = {
       day: "2-digit",
@@ -81,8 +71,6 @@ export function calculationNumberOfDays(
       newDate.setDate(startDate.getDate() + nextDay); // Dodajemy odpowiednią liczbę dni
 
       const currentDay = new Date(newDate); // Tworzymy nowy obiekt daty (skopiowany)
-      const dayOfWeekNumber = currentDay.getDay();
-      // const dayOfWeekString = daysOfTheWeek[dayOfWeekNumber];
       const currentDayString = currentDay.toLocaleDateString(
         "pl-PL",
         dateOptions,
@@ -142,7 +130,6 @@ export function calculationNumberOfDays(
       }
       if (nextDayOfTheDeadline == firstPenaltyTerm + 1) {
         let description = "";
-        console.log("secondPunishment", secondPunishment);
         if (secondPunishment) {
           description = sold
             ? `${langDictionary.calculationNumberOfDays_Penalty[currentLanguage]}: ${notificationOfSaleAmount}`
@@ -195,7 +182,7 @@ export function calculationNumberOfDays(
       nextDayOfTheDeadline++;
       nextDay++;
     } while (nextDayOfTheDeadline < secondPenaltyTerm + 2);
-console.log("listOfDates",listOfDates)
+    
     return { listOfDates, startDate }; // Zwracamy obiekt z listą dat i datą początkową
   }
 

@@ -45,15 +45,14 @@
 .combobox-item {
     display: inline-flex;
     cursor: pointer;
-    // color: var(--combobox-text-color);
 }
 
+//media
 @media print {
 
-    /* Ukrywamy wszystkie elementy poza ListOfDays */
+    // Ukrywane elementy
     .header {
         display: none;
-        /* Ukrywa wszystkie elementy */
     }
 }
 

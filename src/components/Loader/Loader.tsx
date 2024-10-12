@@ -5,7 +5,7 @@ import "./Loader.scss";
 export const Loader: React.FC = () => {
   return (
     <>
-      <div className="container">
+      <div className="container-loader">
         <RotatingLines
           visible={true}
           width="96"

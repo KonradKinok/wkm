@@ -2,8 +2,9 @@ import React from "react";
 import flagPL from "../../images/comboBox/flag-pl.svg";
 import flagGB from "../../images/comboBox/flag-gb.svg";
 import flagUA from "../../images/comboBox/flag-ua.svg";
-import scss from "./LayoutPage.module.scss";
 import { LanguageValue } from "../../components/redux/language/sliceLanguage";
+import scss from "./LayoutPage.module.scss";
+
 export interface LanguageOption {
   value: LanguageValue; // typ LanguageValue zamiast string
   label: JSX.Element;

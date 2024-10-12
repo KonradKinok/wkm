@@ -1,24 +1,12 @@
-import React, { useState } from "react";
-import { DateTimePicker } from "../../components/DateTimePicker/DateTimePicker";
-import scss from "./LegalRegulationsPage.module.scss";
+import React from "react";
 import { selectLanguage } from "../../components/redux/language/selectorsLanguage";
 import { langDictionary } from "../../components/redux/language/constans";
 import { useSelector } from "react-redux";
-interface ListEntry {
-  day: string; // Możesz dostosować typ w zależności od oczekiwanego formatu
-  displayedData: string; // Możesz dostosować typ w zależności od oczekiwanego formatu
-}
-export interface FormValues {
-  selectedDate: Date | null;
-  sold: boolean;
-  bought: boolean;
-  isNaturalPerson: boolean;
-  isLegalPerson: boolean;
-  detailedData: boolean;
-}
+import scss from "./LegalRegulationsPage.module.scss";
 
 export default function LegalRegulationsPage() {
   const currentLanguage = useSelector(selectLanguage);
+
   return (
     <div className={scss["container-legalregulations-page"]}>
       <h1>{langDictionary.navLegalRegulations[currentLanguage]}:</h1>

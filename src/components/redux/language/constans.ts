@@ -1,7 +1,7 @@
 export enum Languages {
     PL = "pl",
     EN = "en",
-  UA="ua",
+    UA = "ua",
 }
 
 export const langDictionary = {
@@ -152,14 +152,13 @@ export const langDictionary = {
         [Languages.UA]: "день терміну",
     },
 
-
-
     //Legalregulations Page
     navLegalRegulations: {
         [Languages.EN]: "Legal regulations",
         [Languages.PL]: "Przepisy prawne",
         [Languages.UA]: "Правові норми",
     },
+    
     // Footer
     footerLibraries: {
         [Languages.EN]: "Libraries",

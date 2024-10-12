@@ -1,12 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
-import { DateTimePicker } from "../../components/DateTimePicker/DateTimePicker";
-import scss from "./FormPenalties.module.scss";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import * as calculator from "../../globalFunctions/calculator";
-import { link } from "fs";
+import { DateTimePicker } from "../../components/DateTimePicker/DateTimePicker";
 import { selectLanguage } from "../redux/language/selectorsLanguage";
 import { langDictionary } from "../redux/language/constans";
-import { useSelector } from "react-redux";
 import { FormValues } from "../../pages/PenaltiesPage/PenaltiesPage";
+import scss from "./FormPenalties.module.scss";
 
 export interface FormPenaltiesProps {
   setCalculatedData: (data: any) => void; // Zdefiniuj typ dla setCalculatedData
@@ -24,15 +23,6 @@ export default function FormPenalties({
     new Date(),
   );
 
-  // const [formValues, setFormValues] = useState<FormValues>({
-  //   selectedDate: null, // Zmieniamy typ na Date | null
-  //   sold: true,
-  //   bought: false,
-  //   isNaturalPerson: true,
-  //   isLegalPerson: false,
-  //   detailedData: false,
-  // });
-
   useEffect(() => {
     setFormValues((prevData) => ({
       ...prevData,
@@ -42,11 +32,10 @@ export default function FormPenalties({
   }, [dateTimePickerDate]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); // Zapobiega domyślnej akcji wysłania formularza
+    event.preventDefault();
     setFormValues((prevData) => ({
       ...prevData,
       selectedDate: dateTimePickerDate,
-      // ponieważ zaznaczenie "Sprzedałem pojazd" automatycznie oznacza, że "Kupiłem pojazd" jest false
     }));
     const {
       selectedDate,
@@ -57,14 +46,6 @@ export default function FormPenalties({
       detailedData,
     } = formValues;
 
-    // Możesz wyświetlić wartości w konsoli lub przetworzyć je według potrzeby
-    console.log("handleSubmit Selected Date:", selectedDate);
-    console.log("Sold:", sold);
-    console.log("Bought:", bought);
-    console.log("Natural Person:", isNaturalPerson);
-    console.log("Legal Person:", isLegalPerson);
-    console.log("Detailed Data:", detailedData);
-
     const calculatedDataFunction = calculator.calculationNumberOfDays(
       selectedDate,
       sold,
@@ -74,12 +55,13 @@ export default function FormPenalties({
       detailedData,
       currentLanguage,
     );
-    console.log(
-      "calculator.calculationNumberOfDays",
-      calculatedDataFunction?.startDate,
-    );
+
     setCalculatedData(calculatedDataFunction);
-    window.scrollBy(0, 300);
+    window.scrollTo({
+      top: 700, // Liczba pikseli, o którą przewija się strona w pionie
+      left: 0, // Liczba pikseli, o którą przewija się strona w poziomie
+      behavior: "smooth", // Ustawienie płynnego przewijania
+    });
   };
   useEffect(() => {
     setCalculatedData(null);
@@ -159,8 +141,8 @@ export default function FormPenalties({
             type="radio"
             name="amount_of_penalty"
             id="radio-bought"
-            checked={formValues.bought} // Gdy "sold" jest false, zaznaczone jest "bought"
-            onChange={handleChange} // Ten sam handler
+            checked={formValues.bought}
+            onChange={handleChange}
             className={scss["toggle-switch"]}
           />
         </div>
@@ -174,8 +156,8 @@ export default function FormPenalties({
             type="radio"
             name="type_of_entity"
             id="natural-person"
-            checked={formValues.isNaturalPerson} // Gdy "sold" jest false, zaznaczone jest "bought"
-            onChange={handleChange} // Ten sam handler
+            checked={formValues.isNaturalPerson}
+            onChange={handleChange}
             className={scss["toggle-switch"]}
           />
           <label htmlFor="legal-person">
@@ -187,8 +169,8 @@ export default function FormPenalties({
             type="radio"
             name="type_of_entity"
             id="legal-person"
-            checked={formValues.isLegalPerson} // Gdy "sold" jest false, zaznaczone jest "bought"
-            onChange={handleChange} // Ten sam handler
+            checked={formValues.isLegalPerson}
+            onChange={handleChange}
             className={scss["toggle-switch"]}
           />
         </div>
@@ -204,8 +186,8 @@ export default function FormPenalties({
             name="detailed-data"
             id="detailed-data"
             className={scss["toggle-switch"]}
-            checked={formValues.detailedData} // Gdy "sold" jest false, zaznaczone jest "bought"
-            onChange={handleChange} // Ten sam handler
+            checked={formValues.detailedData}
+            onChange={handleChange}
           />
           <button type="submit">
             {langDictionary.formPenaltiesButtonShow[currentLanguage]}

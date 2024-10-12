@@ -4,7 +4,6 @@
     padding: 10px 10px;
     width: 100%;
     background-color: var(--main-background);
-    // background-image: linear-gradient(180deg, var(--main-background) 0%, var(--header-background) 50%, var(--main-background) 100%);
     color: var(--main-color);
     font-weight: 700;
     font-size: small;
@@ -65,6 +64,7 @@
     }
 }
 
+//media
 @media (min-width: 769px) {
     .container-legalregulations-page {
         font-size: large;

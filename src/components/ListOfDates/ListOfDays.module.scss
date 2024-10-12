@@ -14,7 +14,6 @@
         column-gap: 5px;
         list-style: none;
         align-items: center;
-
         border-bottom: 1px solid #070707;
         padding-bottom: 5px;
     }
@@ -22,9 +21,7 @@
     .container-icon {
         position: relative;
         width: 32px;
-        /* Stała szerokość kontenera */
         height: 32px;
-        /* Stała wysokość kontenera */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -32,12 +29,10 @@
         .icon {
             width: 32px;
             height: 32px;
-
         }
 
         .icon-day-of-agreement {
             color: var(--day-of-agreement-icon-color);
-
         }
 
         .icon-day-before-punish {
@@ -46,7 +41,6 @@
 
         .icon-day-of-punish {
             color: var(--day-of-punish-icon-color);
-
         }
 
         .text-overlay {
@@ -56,37 +50,30 @@
             transform: translate(-50%, -50%);
             /* Wycentrowanie tekstu w środku ikony */
             font-size: 12px;
-            /* Możesz dostosować wielkość tekstu */
             color: rgb(10, 10, 10);
-            /* Możesz zmienić kolor tekstu, aby był widoczny na ikonie */
             font-weight: bold;
-            /* Opcjonalnie pogrubienie tekstu */
-
         }
     }
 }
 
 @media print {
 
-    /* Ukrywamy wszystkie elementy poza ListOfDays */
-
-
+    //Drukowane elementy
     .container-list-of-days {
         display: block;
-        /* Wyświetla tylko ListOfDays */
         position: relative;
         top: 0;
         left: 0;
         width: 100%;
     }
 
-    /* Stopka z tekstem "wkm.app.com" */
+    //Stopka 
     @page {
         margin: 1cm;
     }
 
     body::after {
-        content: "wkm.app.com";
+        content: "3K.nexgen@gmail.com";
         position: fixed;
         bottom: 0;
         left: 0;

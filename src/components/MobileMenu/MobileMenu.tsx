@@ -30,7 +30,7 @@ export const MobileMenu: React.FC = () => {
             className={scss["mobile-menu-close"]}
             type="button"
             onClick={handleMenuMobileModalOpen}>
-            <IoIosClose className={scss["mobile-menu-close-icon"]} size={32} />
+            <IoIosClose className={scss["mobile-menu-close-icon"]} />
           </button>
           <Navigation onLinkClick={handleMenuMobileModalOpen} />
 

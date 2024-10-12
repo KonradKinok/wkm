@@ -24,7 +24,6 @@ export const Footer: React.FC = () => {
           <img src={footerLogoImage} alt="logoImage" width="24" />
           <img src={footerLogoText} alt="logoText" />
         </div>
-
         <address className={scss["footer-address"]}>
           <a href="mailto:3k.nexgen@gmail.com">3K.nexgen@gmail.com</a>
         </address>

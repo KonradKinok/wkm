@@ -4,7 +4,6 @@
         padding: 30px 10px;
         width: 100%;
         background-color: var(--main-background);
-        // background-image: linear-gradient(180deg, var(--main-background) 0%, var(--header-background) 50%, var(--main-background) 100%);
         color: var(--main-color);
         font-weight: 700;
         font-size: x-large;
@@ -101,10 +100,4 @@
                 justify-self: center;
                 align-self: center;
         }
-}
-
-.title {
-        font-weight: 500;
-        font-size: 48;
-        text-align: center;
 }

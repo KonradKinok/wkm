@@ -23,14 +23,7 @@
     border: solid 1px rgb(138, 43, 226);
     padding: 5px;
     border-radius: 5px;
-
 }
-
-// .custom-title {
-//     color: #082333;
-//     font-size: 20px;
-//     margin-bottom: 4px;
-// }
 
 .toggle-switch {
     width: 2.75rem;
@@ -91,16 +84,6 @@
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); // Cień domyślny
     }
 
-    // button::before {
-    //     content: '';
-    //     position: absolute;
-    //     inset: 0;
-    //     background: inherit;
-    //     z-index: -1;
-    //     transform: translateY(20%) scale(.96);
-    //     filter: blur(24px);
-    // }
-
     button:not(:disabled):focus,
     button:not(:disabled):hover {
         background-image: linear-gradient(to left, var(--form-button-background-first), var(--form-button-background-second));
@@ -119,12 +102,11 @@
     }
 }
 
-
+//media
 @media print {
 
-    /* Ukrywamy wszystkie elementy poza ListOfDays */
+    //Ukrywamy element
     .container-form {
         display: none;
-        /* Ukrywa wszystkie elementy */
     }
 }
