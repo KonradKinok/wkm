@@ -6,7 +6,7 @@ import { ListEntry } from "../../globalFunctions/calculator";
 import { FormValues } from "../../pages/PenaltiesPage/PenaltiesPage";
 import scss from "./ListOfDays.module.scss";
 
-interface CalculatedData {
+export interface CalculatedData {
   listOfDates: ListEntry[];
   startDate: string | Date;
 }
@@ -47,7 +47,20 @@ export default function ListOfDays({
       });
       setCurrentList(filteredItems || []);
     }
+    window.scrollTo({
+      top: 700,
+      left: 0,
+      behavior: "smooth",
+    });
   }, [formValues.detailedData, calculatedData?.listOfDates]);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 700,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [calculatedData]);
 
   return (
     <ul className={scss["container-list-of-days"]}>

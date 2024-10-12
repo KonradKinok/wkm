@@ -6,15 +6,18 @@ import { selectLanguage } from "../redux/language/selectorsLanguage";
 import { langDictionary } from "../redux/language/constans";
 import { FormValues } from "../../pages/PenaltiesPage/PenaltiesPage";
 import scss from "./FormPenalties.module.scss";
+import { CalculatedData } from "../ListOfDates/ListOfDays";
 
 export interface FormPenaltiesProps {
   setCalculatedData: (data: any) => void; // Zdefiniuj typ dla setCalculatedData
   formValues: FormValues;
   setFormValues: React.Dispatch<React.SetStateAction<FormValues>>;
+  calculatedData: CalculatedData | null;
 }
 
 export default function FormPenalties({
   setCalculatedData,
+  calculatedData,
   formValues,
   setFormValues,
 }: FormPenaltiesProps) {
@@ -57,16 +60,12 @@ export default function FormPenalties({
     );
 
     setCalculatedData(calculatedDataFunction);
-    window.scrollTo({
-      top: 700, // Liczba pikseli, o którą przewija się strona w pionie
-      left: 0, // Liczba pikseli, o którą przewija się strona w poziomie
-      behavior: "smooth", // Ustawienie płynnego przewijania
-    });
   };
 
   useEffect(() => {
     setCalculatedData(null);
   }, [currentLanguage]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked, id } = e.target;
 
@@ -100,7 +99,6 @@ export default function FormPenalties({
         ...prevData,
         detailedData: checked, // Aktualizowanie wartości checkboxa
       }));
-      window.scrollBy(0, 120);
     }
     if (name !== "detailed-data") {
       setCalculatedData(null);
