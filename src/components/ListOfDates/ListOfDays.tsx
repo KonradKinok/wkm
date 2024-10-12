@@ -47,11 +47,6 @@ export default function ListOfDays({
       });
       setCurrentList(filteredItems || []);
     }
-    window.scrollTo({
-      top: 700,
-      left: 0,
-      behavior: "smooth",
-    });
   }, [formValues.detailedData, calculatedData?.listOfDates]);
 
   useEffect(() => {
@@ -60,7 +55,7 @@ export default function ListOfDays({
       left: 0,
       behavior: "smooth",
     });
-  }, [calculatedData]);
+  }, [currentList]);
 
   return (
     <ul className={scss["container-list-of-days"]}>
