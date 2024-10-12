@@ -28,9 +28,17 @@
     text-decoration: none;
 }
 
+//media
 @media (min-width: 769px) {
     .up-button {
         bottom: 80px;
         right: 10px;
+    }
+}
+
+@media print {
+    // Ukrywane elementy
+    .up-button {
+        display: none;
     }
 }

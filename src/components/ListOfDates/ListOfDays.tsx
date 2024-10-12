@@ -51,7 +51,7 @@ export default function ListOfDays({
 
   useEffect(() => {
     window.scrollTo({
-      top: 700,
+      top: 685,
       left: 0,
       behavior: "smooth",
     });
