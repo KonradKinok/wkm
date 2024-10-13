@@ -27,7 +27,12 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: linear-gradient(62deg, var(--mobile-menu-background-gradient1) 0%, var(--mobile-menu-background-gradient2) 100%);
+    background-image: linear-gradient(157deg,
+            var(--mobile-menu-background-gradient1),
+            var(--mobile-menu-background-gradient2),
+            var(--mobile-menu-background-gradient3),
+            var(--mobile-menu-background-gradient4));
+
     z-index: 999;
     transform: translateX(100%);
     transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
