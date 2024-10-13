@@ -7,9 +7,9 @@ export enum Languages {
 export const langDictionary = {
     //Header
     navWkm: {
-        [Languages.EN]: "Wkm2024",
-        [Languages.PL]: "Wkm2024",
-        [Languages.UA]: "Wkm2024",
+        [Languages.EN]: "Wkm",
+        [Languages.PL]: "Wkm",
+        [Languages.UA]: "Wkm",
     },
     //Nav
     navPhonebook: {

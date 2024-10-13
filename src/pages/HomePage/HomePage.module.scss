@@ -24,80 +24,12 @@
 
         .link {
                 text-decoration: underline solid;
+                color: var(--main-color);
         }
 
         .link:hover {
                 text-decoration: underline double;
         }
 
-        .img-container-sadman {
-                grid-area: imgSadman;
-                max-width: 400px;
-                justify-self: center;
-                align-self: center;
-                position: relative;
-                display: inline-block;
-                z-index: 1;
-        }
 
-        .img-container-sadman::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: url(../../images/homePage/phonbook-negative.jpg);
-                background-repeat: no-repeat;
-                background-size: cover;
-                z-index: -1;
-                transform: translateY(10%) translateX(10%) scale(0.96);
-                filter: blur(30px);
-                border-radius: 25px;
-        }
-
-        .img-container-happyman {
-                grid-area: imgHappyman;
-                max-width: 400px;
-                justify-self: center;
-                align-self: center;
-                position: relative;
-                display: inline-block;
-                z-index: 1;
-        }
-
-        .img-container-happyman::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: url(../../images/homePage/phonebook-positive.jpg);
-                background-repeat: no-repeat;
-                background-size: cover;
-                z-index: -1;
-                transform: translateY(10%) translateX(10%) scale(0.96);
-                filter: blur(30px);
-                border-radius: 10px;
-        }
-
-        .img {
-                display: block;
-                border-radius: 25px;
-                position: relative;
-                z-index: 1;
-        }
-
-        .first-phrase-home-page {
-                grid-area: firstPhrase;
-                justify-self: center;
-                align-self: center;
-        }
-
-        .second-phrase-home-page {
-                grid-area: secondPhrase;
-                justify-self: center;
-                align-self: center;
-        }
 }
