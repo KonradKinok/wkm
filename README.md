@@ -1,6 +1,7 @@
 # GitHub Page
 
 https://konradkinok.github.io/wkm/
+https://wkm1.netlify.app
 
 # Description
 
