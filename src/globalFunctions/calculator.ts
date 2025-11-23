@@ -248,8 +248,9 @@ function isHoliday(dayOff: Date): boolean {
   if (dayOff.getMonth() === 7 && dayOff.getDate() === 15) return true; // Wniebowzięcie NMP / Święto Wojska Polskiego
   if (dayOff.getMonth() === 10 && dayOff.getDate() === 1) return true; // Wszystkich Świętych
   if (dayOff.getMonth() === 10 && dayOff.getDate() === 11) return true; // Święto Niepodległości
-  if (dayOff.getMonth() === 11 && dayOff.getDate() === 24) return true; // Boże Narodzenie (pierwszy dzień)
-  if (dayOff.getMonth() === 11 && dayOff.getDate() === 25) return true; // Boże Narodzenie (drugi dzień)
+  if (dayOff.getFullYear() >= 2025 && dayOff.getMonth() === 11 && dayOff.getDate() === 24) return true; // Wigilia (od 2025 roku)
+  if (dayOff.getMonth() === 11 && dayOff.getDate() === 25) return true; // Boże Narodzenie (pierwszy dzień)
+  if (dayOff.getMonth() === 11 && dayOff.getDate() === 26) return true; // Boże Narodzenie (drugi dzień)
 
   // Oblicza datę Wielkanocy (algorytm Gaussa)
   const year = dayOff.getFullYear();
