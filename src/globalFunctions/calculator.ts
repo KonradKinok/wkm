@@ -82,11 +82,7 @@ export function calculationNumberOfDays(
 
       //date of an agreement
       if (nextDayOfTheDeadline == 0) {
-        const description = sold
-          ? langDictionary.calculationNumberOfDays_DateOfContract[currentLanguage]
-          : `${langDictionary.calculationNumberOfDays_DateOfContract[currentLanguage]} / 
-          ${langDictionary.calculationNumberOfDays_ImportingVehicle[currentLanguage]}`;
-
+        const description = langDictionary.calculationNumberOfDays_FirstDate[currentLanguage]
         listOfDates.push({
           nextDay: `${nextDay.toString().padStart(3, "0")}`,
           nextDayOfTheDeadline: `${nextDayOfTheDeadline.toString().padStart(3, "0")}`, // Numerowanie dni

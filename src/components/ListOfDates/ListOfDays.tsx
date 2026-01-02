@@ -31,9 +31,7 @@ export default function ListOfDays({
         const description = item.description.toLowerCase(); // Konwersja na małe litery dla porównania
         return (
           description.includes(
-            langDictionary.calculationNumberOfDays_DateOfContract[
-              currentLanguage
-            ],
+            langDictionary.calculationNumberOfDays_FirstDate[currentLanguage],
           ) ||
           description.includes(
             langDictionary.calculationNumberOfDays_Penalty[currentLanguage],
@@ -51,7 +49,7 @@ export default function ListOfDays({
 
   useEffect(() => {
     window.scrollTo({
-      top: 685,
+      top: 730,
       left: 0,
       behavior: "smooth",
     });

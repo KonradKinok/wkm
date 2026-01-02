@@ -8,10 +8,10 @@ export interface FormValues {
   selectedDate: Date | null;
   sold: boolean;
   bought: boolean;
+  inheritance: boolean;
   isNaturalPerson: boolean;
   isLegalPerson: boolean;
   detailedData: boolean;
-  inheritance: boolean;
 }
 
 export default function PenaltiesPage() {

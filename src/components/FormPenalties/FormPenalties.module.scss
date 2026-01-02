@@ -15,7 +15,7 @@
     border: solid 1px rgb(138, 43, 226);
     padding: 5px;
     border-radius: 5px;
-    z-index: 900;
+    z-index: 1;
 }
 
 .container-radio {
@@ -23,18 +23,6 @@
     border: solid 1px rgb(138, 43, 226);
     padding: 5px;
     border-radius: 5px;
-}
-
-.container-buy-vehicle {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.radio-center {
-    position: absolute;
-    left: 55%;
 }
 
 .toggle-switch {

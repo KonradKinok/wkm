@@ -45,10 +45,10 @@ export default function FormPenalties({
       selectedDate,
       sold,
       bought,
+      inheritance,
       isNaturalPerson,
       isLegalPerson,
       detailedData,
-      inheritance,
     } = formValues;
 
     const calculatedDataFunction = calculator.calculationNumberOfDays(
@@ -71,43 +71,44 @@ export default function FormPenalties({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked, id } = e.target;
-
-    if (id === "radio-sold") {
-      setFormValues((prevData) => ({
-        ...prevData,
-        sold: true,
-        bought: false, // ponieważ zaznaczenie "Sprzedałem pojazd" automatycznie oznacza, że "Kupiłem pojazd" jest false
-      }));
-    } else if (id === "radio-bought") {
-      setFormValues((prevData) => ({
-        ...prevData,
-        sold: false,
-        bought: true, // ponieważ zaznaczenie "Kupiłem pojazd" automatycznie oznacza, że "Sprzedałem pojazd" jest false
-      }));
-    } else if (id === "natural-person") {
-      setFormValues((prevData) => ({
-        ...prevData,
-        isNaturalPerson: true,
-        isLegalPerson: false, // ponieważ zaznaczenie "Kupiłem pojazd" automatycznie oznacza, że "Sprzedałem pojazd" jest false
-      }));
-    } else if (id === "legal-person") {
-      setFormValues((prevData) => ({
-        ...prevData,
-        isNaturalPerson: false,
-        isLegalPerson: true, // ponieważ zaznaczenie "Kupiłem pojazd" automatycznie oznacza, że "Sprzedałem pojazd" jest false
-      }));
-    } else if (name === "detailed-data") {
-      // Obsługa checkboxa
-      setFormValues((prevData) => ({
-        ...prevData,
-        detailedData: checked, // Aktualizowanie wartości checkboxa
-      }));
-    } else if (name === "inheritance") {
-      setFormValues((prev) => ({
-        ...prev,
-        inheritance: checked,
-      }));
-    }
+    setFormValues((prev) => {
+      switch (id) {
+        case "radio-sold":
+          return { ...prev, sold: true, bought: false, inheritance: false };
+        case "radio-bought":
+          return { ...prev, sold: false, bought: true, inheritance: false };
+        case "radio-inheritance":
+          return {
+            ...prev,
+            sold: false,
+            bought: false,
+            inheritance: true,
+            isNaturalPerson: true,
+            isLegalPerson: false,
+          };
+        case "natural-person":
+          return { ...prev, isNaturalPerson: true, isLegalPerson: false };
+        case "legal-person":
+          if (formValues.inheritance) {
+            return {
+              ...prev,
+              sold: true,
+              inheritance: false,
+              isNaturalPerson: false,
+              isLegalPerson: true,
+            };
+          }
+          return {
+            ...prev,
+            isNaturalPerson: false,
+            isLegalPerson: true,
+          };
+        case "detailed-data":
+          return { ...prev, detailedData: checked };
+        default:
+          return { ...prev, [name]: checked };
+      }
+    });
     if (name !== "detailed-data") {
       setCalculatedData(null);
     }
@@ -144,28 +145,27 @@ export default function FormPenalties({
               {langDictionary.formPenaltiesBuyVehicle[currentLanguage]}
             </p>
           </label>
-          <div className={scss["container-buy-vehicle"]}>
-            <input
-              type="radio"
-              name="amount_of_penalty"
-              id="radio-bought"
-              checked={formValues.bought}
-              onChange={handleChange}
-              className={scss["toggle-switch"]}
-            />
-            {formValues.bought && (
-              <div className={scss["radio-center"]}>
-                <CheckboxRegular
-                  checked={formValues.inheritance}
-                  onChange={handleChange}
-                  name="inheritance"
-                  labelText={
-                    langDictionary.formPenaltiesInheritance[currentLanguage]
-                  }
-                />
-              </div>
-            )}
-          </div>
+          <input
+            type="radio"
+            name="amount_of_penalty"
+            id="radio-bought"
+            checked={formValues.bought}
+            onChange={handleChange}
+            className={scss["toggle-switch"]}
+          />
+          <label htmlFor="radio-inheritance">
+            <p className={scss["custom-title"]}>
+              {langDictionary.formPenaltiesInheritance[currentLanguage]}
+            </p>
+          </label>
+          <input
+            type="radio"
+            name="amount_of_penalty"
+            id="radio-inheritance"
+            checked={formValues.inheritance}
+            onChange={handleChange}
+            className={scss["toggle-switch"]}
+          />
         </div>
         <div className={scss["container-radio"]}>
           <label htmlFor="natural-person">

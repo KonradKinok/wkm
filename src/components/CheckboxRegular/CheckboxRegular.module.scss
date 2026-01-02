@@ -29,11 +29,12 @@
   }
 
   .label-text {
-    white-space: nowrap;
+    // white-space: nowrap;
     position: absolute;
     left: calc(var(--width) + 5px);
     transform: translateY(50%);
     user-select: none;
+    font-size: 10px;
   }
 
   /* Style the checkmark */

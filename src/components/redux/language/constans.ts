@@ -56,9 +56,9 @@ export const langDictionary = {
 
     // FormPenalties
     formPenaltiesStartDate: {
-        [Languages.EN]: "Select the date of the contract, the date of importing the vehicle to Poland:",
-        [Languages.PL]: "Wybierz datę sporządzenia umowy, datę sprowadzenia pojazdu do Polski:",
-        [Languages.UA]: "Виберіть дату складання договору та дату привезення автомобіля до Польщі:",
+        [Languages.EN]: "Select the date of the contract, vehicle import to Poland, or inheritance:",
+        [Languages.PL]: "Wybierz datę sporządzenia umowy, sprowadzenia pojazdu do Polski, dziedziczenia:",
+        [Languages.UA]: "Виберіть дату укладення договору, ввезення транспортного засобу до Польщі або успадкування:",
     },
     formPenaltiesSoldVehicle: {
         [Languages.EN]: "I sold the vehicle:",
@@ -71,9 +71,9 @@ export const langDictionary = {
         [Languages.UA]: "Я купив/імпортував автомобіль:",
     },
     formPenaltiesInheritance: {
-        [Languages.EN]: "I inherited a vehicle.",
-        [Languages.PL]: "Odziedziczyłem pojazd.",
-        [Languages.UA]: "Я успадкував автомобіль.",
+        [Languages.EN]: "I inherited a vehicle in Poland:",
+        [Languages.PL]: "Odziedziczyłem pojazd w Polsce:",
+        [Languages.UA]: "Я успадкував транспортний засіб у Польщі:",
     },
     formPenaltiesNaturalPerson: {
         [Languages.EN]: "I am a natural person:",
@@ -126,6 +126,12 @@ export const langDictionary = {
     },
 
     //calculationNumberOfDays
+    calculationNumberOfDays_FirstDate: {
+        [Languages.EN]: "start date",
+        [Languages.PL]: "data początkowa",
+        [Languages.UA]: "початкова дата",
+    },
+
     calculationNumberOfDays_DateOfContract: {
         [Languages.EN]: "date of contract",
         [Languages.PL]: "data umowy",
