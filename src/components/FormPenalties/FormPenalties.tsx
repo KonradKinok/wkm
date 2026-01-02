@@ -5,8 +5,9 @@ import { DateTimePicker } from "../../components/DateTimePicker/DateTimePicker";
 import { selectLanguage } from "../redux/language/selectorsLanguage";
 import { langDictionary } from "../redux/language/constans";
 import { FormValues } from "../../pages/PenaltiesPage/PenaltiesPage";
-import scss from "./FormPenalties.module.scss";
 import { CalculatedData } from "../ListOfDates/ListOfDays";
+import { CheckboxRegular } from "../CheckboxRegular/CheckboxRegular";
+import scss from "./FormPenalties.module.scss";
 
 export interface FormPenaltiesProps {
   setCalculatedData: (data: any) => void; // Zdefiniuj typ dla setCalculatedData
@@ -47,12 +48,14 @@ export default function FormPenalties({
       isNaturalPerson,
       isLegalPerson,
       detailedData,
+      inheritance,
     } = formValues;
 
     const calculatedDataFunction = calculator.calculationNumberOfDays(
       selectedDate,
       sold,
       bought,
+      inheritance,
       isNaturalPerson,
       isLegalPerson,
       detailedData,
@@ -99,6 +102,11 @@ export default function FormPenalties({
         ...prevData,
         detailedData: checked, // Aktualizowanie wartości checkboxa
       }));
+    } else if (name === "inheritance") {
+      setFormValues((prev) => ({
+        ...prev,
+        inheritance: checked,
+      }));
     }
     if (name !== "detailed-data") {
       setCalculatedData(null);
@@ -136,14 +144,28 @@ export default function FormPenalties({
               {langDictionary.formPenaltiesBuyVehicle[currentLanguage]}
             </p>
           </label>
-          <input
-            type="radio"
-            name="amount_of_penalty"
-            id="radio-bought"
-            checked={formValues.bought}
-            onChange={handleChange}
-            className={scss["toggle-switch"]}
-          />
+          <div className={scss["container-buy-vehicle"]}>
+            <input
+              type="radio"
+              name="amount_of_penalty"
+              id="radio-bought"
+              checked={formValues.bought}
+              onChange={handleChange}
+              className={scss["toggle-switch"]}
+            />
+            {formValues.bought && (
+              <div className={scss["radio-center"]}>
+                <CheckboxRegular
+                  checked={formValues.inheritance}
+                  onChange={handleChange}
+                  name="inheritance"
+                  labelText={
+                    langDictionary.formPenaltiesInheritance[currentLanguage]
+                  }
+                />
+              </div>
+            )}
+          </div>
         </div>
         <div className={scss["container-radio"]}>
           <label htmlFor="natural-person">

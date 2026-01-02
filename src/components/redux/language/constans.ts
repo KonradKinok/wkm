@@ -38,12 +38,12 @@ export const langDictionary = {
         [Languages.PL]: "Nie przekrocz ustawowych terminów i uniknij kar!",
         [Languages.UA]: "Не перевищуйте встановлені законом терміни та уникайте штрафів!",
     },
-     homePageThirdText: {
+    homePageThirdText: {
         [Languages.EN]: "Register or report the sale of your car on time.",
         [Languages.PL]: "Zarejestruj lub zgłoś zbycie samochodu na czas.",
         [Languages.UA]: "Вчасно зареєструйте або повідомте про продаж автомобіля.",
     },
-     homePageFourthTextFirstPart: {
+    homePageFourthTextFirstPart: {
         [Languages.EN]: "Check the date",
         [Languages.PL]: "Sprawdź termin",
         [Languages.UA]: "Перевірте дату",
@@ -54,7 +54,7 @@ export const langDictionary = {
         [Languages.UA]: "зараз!",
     },
 
-// FormPenalties
+    // FormPenalties
     formPenaltiesStartDate: {
         [Languages.EN]: "Select the date of the contract, the date of importing the vehicle to Poland:",
         [Languages.PL]: "Wybierz datę sporządzenia umowy, datę sprowadzenia pojazdu do Polski:",
@@ -65,10 +65,15 @@ export const langDictionary = {
         [Languages.PL]: "Sprzedałem pojazd:",
         [Languages.UA]: "Я продав автомобіль:",
     },
-   formPenaltiesBuyVehicle: {
+    formPenaltiesBuyVehicle: {
         [Languages.EN]: "I bought/imported a vehicle:",
         [Languages.PL]: "Kupiłem/sprowadziłem pojazd:",
         [Languages.UA]: "Я купив/імпортував автомобіль:",
+    },
+    formPenaltiesInheritance: {
+        [Languages.EN]: "I inherited a vehicle.",
+        [Languages.PL]: "Odziedziczyłem pojazd.",
+        [Languages.UA]: "Я успадкував автомобіль.",
     },
     formPenaltiesNaturalPerson: {
         [Languages.EN]: "I am a natural person:",
@@ -90,14 +95,14 @@ export const langDictionary = {
         [Languages.PL]: "Pokaż",
         [Languages.UA]: "Показати",
     },
-    
+
     // DateTimePicker
     dateTimePickerButtonToday: {
         [Languages.EN]: "Today",
         [Languages.PL]: "Dzisiaj",
         [Languages.UA]: "Сьогодні",
     },
-    
+
     //listOfDays
     listOfDaysNextDay: {
         [Languages.EN]: "Next day",
@@ -158,7 +163,7 @@ export const langDictionary = {
         [Languages.PL]: "Przepisy prawne",
         [Languages.UA]: "Правові норми",
     },
-    
+
     // Footer
     footerLibraries: {
         [Languages.EN]: "Libraries",
@@ -172,7 +177,7 @@ export const langDictionary = {
         [Languages.PL]: "Użyte biblioteki:",
         [Languages.UA]: "Використані бібліотеки",
     },
-    
-    
+
+
 
 }

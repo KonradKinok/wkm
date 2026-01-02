@@ -16,6 +16,7 @@ export function calculationNumberOfDays(
   selectedDate: Date | null,
   sold: boolean,
   bought: boolean,
+  inheritance: boolean,
   isNaturalPerson: boolean,
   isLegalPerson: boolean,
   detailedData: boolean,
@@ -39,7 +40,7 @@ export function calculationNumberOfDays(
       firstPenaltyTerm = 30;
       secondPenaltyTerm = 30;
     } else {
-      firstPenaltyTerm = isNaturalPerson ? 30 : 90;
+      firstPenaltyTerm = isNaturalPerson ? (inheritance ? 60 : 30) : 90;
       secondPenaltyTerm = 180;
     }
     let secondPunishment = false;

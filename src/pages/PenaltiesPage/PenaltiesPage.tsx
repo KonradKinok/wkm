@@ -11,6 +11,7 @@ export interface FormValues {
   isNaturalPerson: boolean;
   isLegalPerson: boolean;
   detailedData: boolean;
+  inheritance: boolean;
 }
 
 export default function PenaltiesPage() {
@@ -22,6 +23,7 @@ export default function PenaltiesPage() {
     isNaturalPerson: true,
     isLegalPerson: false,
     detailedData: false,
+    inheritance: false,
   });
 
   return (

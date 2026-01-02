@@ -25,6 +25,18 @@
     border-radius: 5px;
 }
 
+.container-buy-vehicle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.radio-center {
+    position: absolute;
+    left: 55%;
+}
+
 .toggle-switch {
     width: 2.75rem;
     height: 1.5rem;

@@ -35,10 +35,17 @@ export default function LegalRegulationsPage() {
             </ol>
           </li>
           <li>
-            Art. 73aa ust.2: W przypadku nabycia pojazdu, o którym mowa w ust. 1
-            pkt 1, w drodze spadku termin, o którym mowa w ust. 1, biegnie od
-            dnia prawomocnego orzeczenia sądu o stwierdzeniu nabycia spadku albo
-            sporządzenia aktu poświadczenia dziedziczenia.
+            Art.73aa ust.2: W przypadku nabycia pojazdu, o którym mowa w ust. 1
+            pkt 1, w drodze spadku termin na złożenie wniosku o rejestrację
+            pojazdu, o którym mowa w ust. 1, wynosi 60 dni od dnia prawomocnego
+            orzeczenia sądu o stwierdzeniu nabycia spadku albo sporządzenia aktu
+            poświadczenia dziedziczenia.
+          </li>
+          <li>
+            Art.73aa ust.2a: W przypadku nabycia pojazdu, o którym mowa w ust. 1
+            pkt 1, wycofanego czasowo z ruchu termin, o którym mowa w ust. 1,
+            biegnie od dnia, w którym upłynął okres czasowego wycofania pojazdu
+            z ruchu określony w decyzji o czasowym wycofaniu pojazdu z ruchu.
           </li>
           <li>
             Art. 73aa ust.3: W przypadku gdy właścicielem pojazdu, o którym mowa
@@ -54,16 +61,39 @@ export default function LegalRegulationsPage() {
             profesjonalnej rejestracji pojazdów.
           </li>
           <li>
-            Art. 73aa ust.5: Przepisów ust. 1 i 3 nie stosuje się w przypadku,
+            Art.73aa ust.5: Przepisów ust. 1, 2 i 3 nie stosuje się w przypadku,
             gdy właścicielem nowego pojazdu jest przedsiębiorca prowadzący na
             terytorium Rzeczypospolitej Polskiej działalność gospodarczą w
             zakresie obrotu pojazdami lub produkcji pojazdów.
           </li>
           <li>
-            Art. 73aa ust.6: Przepisu ust. 1 pkt 1 nie stosuje się w przypadku,
-            gdy przed upływem terminów, o których mowa w ust. 1 albo 3,
-            właścicielowi pojazdu nabytego i zarejestrowanego na terytorium
-            Rzeczypospolitej Polskiej zostały wydane:
+            Art.73aa ust.5a: Przepisów ust. 1 nie stosuje się, w przypadku gdy
+            właścicielem pojazdu:
+            <ol className={scss["legalregulations-list-number"]}>
+              <li>
+                przejętego na podstawie art. 50a ust. 2 zdanie drugie jest
+                gmina;
+              </li>
+              <li>
+                przejętego na podstawie orzeczenia sądu wydanego w związku z
+                wnioskiem, o którym mowa w art. 130a ust. 10 zdanie pierwsze,
+                jest powiat;
+              </li>
+              <li>nabytego w drodze spadku jest gmina albo Skarb Państwa;</li>
+              <li>
+                przejętego po likwidacji przedsiębiorstwa jest gmina albo Skarb
+                Państwa;
+              </li>
+              <li>
+                przejętego na podstawie art. 44b ustawy z dnia 6 czerwca 1997 r.
+                - Kodeks karny (Dz. U. z 2025 r. poz. 383) jest Skarb Państwa
+              </li>
+            </ol>
+          </li>
+          <li>
+            Art.73aa ust.6: Przepisu ust. 1 pkt 1 nie stosuje się, w przypadku
+            gdy przed upływem terminów, o których mowa w ust. 1, 2 albo 3,
+            właścicielowi pojazdu zostały wydane:
             <ol className={scss["legalregulations-list-number"]}>
               <li>zaświadczenie o demontażu pojazdu, o którym mowa w:</li>
               <ol className={scss["legalregulations-list-letter"]}>
@@ -77,15 +107,28 @@ export default function LegalRegulationsPage() {
               <li>
                 zaświadczenie o przyjęciu niekompletnego pojazdu, o którym mowa
                 w art. 25 ust. 1 albo art. 33 ust. 3 ustawy z dnia 20 stycznia
-                2005 r. o recyklingu pojazdów wycofanych z eksploatacji.
+                2005 r. o recyklingu pojazdów wycofanych z eksploatacji;
+              </li>
+              <li>
+                zaświadczenie potwierdzające zgłoszenie kradzieży pojazdu;
+              </li>
+              <li>
+                postanowienie o umorzeniu postępowania przygotowawczego w
+                sprawie kradzieży pojazdu.
               </li>
             </ol>
           </li>
           <li>
-            Art. 73aa ust.7: Przepisu ust. 1 pkt 1 nie stosuje się w przypadku,
-            gdy właściciel pojazdu nabytego na terytorium Rzeczypospolitej
-            Polskiej dokona zbycia tego pojazdu przed upływem terminów, o
-            których mowa w ust. 1 albo 3.
+            Art.73aa ust.6a: Przepisu ust. 1 pkt 1 nie stosuje się, w przypadku
+            gdy przed upływem terminów, o których mowa w ust. 1, 2 albo 3,
+            nastąpiła udokumentowana trwała i zupełna utrata posiadania pojazdu
+            bez zmiany w zakresie prawa własności, o której mowa w art. 79 ust.
+            1 pkt 5.
+          </li>
+          <li>
+            Art. 73aa ust.7: Przepisu ust. 1 nie stosuje się, w przypadku gdy
+            właściciel pojazdu dokona zbycia tego pojazdu przed upływem
+            terminów, o których mowa w ust. 1, 2 albo 3
           </li>
           <li>
             Art. 78 ust.2 pkt 1: Właściciel pojazdu zarejestrowanego na
@@ -108,8 +151,8 @@ export default function LegalRegulationsPage() {
           <li>
             Art. 140mb ust.1: Kto będąc właścicielem pojazdu obowiązanym do
             złożenia wniosku o rejestrację pojazdu w terminie, o którym mowa w
-            art. 73aa ust. 1, nie złoży tego wniosku w terminie, podlega karze
-            pieniężnej w wysokości 500 zł.
+            art. 73aa ust. 1 albo 2, nie złoży tego wniosku w terminie, podlega
+            karze pieniężnej w wysokości 500 zł.
           </li>
           <li>
             Art. 140mb ust.2: Kto będąc właścicielem pojazdu obowiązanym do
@@ -127,12 +170,12 @@ export default function LegalRegulationsPage() {
             Art. 140mb ust.4: Kary pieniężnej, o której mowa w ust. 3, nie
             nakłada się, jeżeli termin na uzupełnienie braków złożonego wniosku
             o rejestrację pojazdu upływa odpowiednio przed upływem terminu, o
-            którym mowa w art. 73aa ust. 1 albo 3.
+            którym mowa w art. 73aa ust. 1,2 albo 3.
           </li>
           <li>
             Art. 140mb ust.5: W przypadku niezłożenia wniosku o rejestrację
             pojazdu w terminie 180 dni od dnia, o którym mowa odpowiednio w art.
-            73aa ust. 1 albo 2, karę pieniężną, o której mowa:
+            73aa ust. 1,2 albo 2a, karę pieniężną, o której mowa:
             <ol className={scss["legalregulations-list-number"]}>
               <li>w ust. 1, nakłada się w wysokości 1000 zł;</li>
               <li>w ust. 2, nakłada się w wysokości 2000 zł.</li>
